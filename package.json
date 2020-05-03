@@ -1,0 +1,25 @@
+{
+  "fitbit": {
+    "appUUID": "999704aa-d10a-4a4d-b8c0-1fc116f87c78",
+    "appType": "clockface",
+    "appDisplayName": "Arkana Clock",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "higgs",
+      "meson",
+      "gemini",
+      "mira"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Arkana Clock"
+      }
+    },
+    "defaultLanguage": "en-US"
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~4.1.0"
+  }
+}
