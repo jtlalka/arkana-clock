@@ -1,25 +1,35 @@
 {
-  "fitbit": {
-    "appUUID": "999704aa-d10a-4a4d-b8c0-1fc116f87c78",
-    "appType": "clockface",
-    "appDisplayName": "Arkana Clock",
-    "iconFile": "resources/icon.png",
-    "wipeColor": "",
-    "requestedPermissions": [],
-    "buildTargets": [
-      "higgs",
-      "meson",
-      "gemini",
-      "mira"
-    ],
-    "i18n": {
-      "en": {
-        "name": "Arkana Clock"
-      }
+    "fitbit": {
+        "appUUID": "999704aa-d10a-4a4d-b8c0-1fc116f87c78",
+        "appType": "clockface",
+        "appDisplayName": "Arkana Clock",
+        "iconFile": "resources/icon.png",
+        "wipeColor": "",
+        "requestedPermissions": [],
+        "buildTargets": [
+            "higgs",
+            "meson",
+            "gemini",
+            "mira"
+        ],
+        "i18n": {
+            "en": {
+                "name": "Arkana Clock"
+            }
+        },
+        "defaultLanguage": "en-US"
     },
-    "defaultLanguage": "en-US"
-  },
-  "devDependencies": {
-    "@fitbit/sdk": "~4.1.0"
-  }
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "scripts": {
+        "build": "fitbit-build"
+    },
+    "devDependencies": {
+        "@fitbit/sdk": "^4.1.0",
+        "@fitbit/sdk-cli": "^1.7.1",
+        "cz-conventional-changelog": "^3.1.0"
+    }
 }
