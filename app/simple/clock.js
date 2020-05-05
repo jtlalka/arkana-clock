@@ -2,7 +2,7 @@ import clock from "clock";
 import {preferences} from "user-settings";
 
 import {days, months, monthsShort} from "./locales/en.js";
-import * as util from "./utils";
+import * as util from "../../common/numberUtils";
 
 let dateFormat, clockCallback;
 

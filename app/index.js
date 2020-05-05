@@ -2,8 +2,8 @@ import document from "document";
 
 import * as simpleActivity from "./simple/activity";
 import * as simpleClock from "./simple/clock";
-import * as simpleHRM from "./simple/hrm";
-import * as simpleSettings from "./simple/device-settings";
+import * as simpleHRM from "./module/hrm";
+import * as simpleSettings from "./simple/settings";
 
 let background = document.getElementById("background");
 let dividers = document.getElementsByClassName("divider");
