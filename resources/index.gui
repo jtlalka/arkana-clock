@@ -1,12 +1,21 @@
 <svg>
     <rect id="background"/>
+
+    <arc x="0" y="2%" width="96%" height="96%" fill="fb-extra-dark-gray"
+         arc-width="4" start-angle="180" sweep-angle="180" />
+
+    <arc x="4%" y="2%" width="96%" height="96%" fill="fb-extra-dark-gray"
+         arc-width="4" start-angle="0" sweep-angle="180" />
+
     <text id="txtTime" class="clock-text">13:37</text>
     <rect class="divider divider-top"/>
     <text id="txtDate" class="date-text">MON JANUARY 01</text>
     <rect class="divider divider-btm"/>
-    <svg class="stats">
+
+    <section class="stats">
         <use id="iconHRM" href="#heart-beat"/>
         <text id="txtHRM" class="stat-left"/>
+
         <use id="stats-cycle" href="#cycleview">
             <use href="#cycleview-item" class="cycle-item">
                 <image href="images/steps.png" class="image"/>
@@ -29,5 +38,5 @@
                 <text class="stat-right"/>
             </use>
         </use>
-    </svg>
+    </section>
 </svg>
