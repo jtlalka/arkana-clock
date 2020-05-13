@@ -1,42 +1,195 @@
-<svg>
-    <rect id="background"/>
+<svg class="screen">
 
-    <arc x="0" y="2%" width="96%" height="96%" fill="fb-extra-dark-gray"
-         arc-width="4" start-angle="180" sweep-angle="180" />
+    <section class="header-section">
 
-    <arc x="4%" y="2%" width="96%" height="96%" fill="fb-extra-dark-gray"
-         arc-width="4" start-angle="0" sweep-angle="180" />
 
-    <text id="txtTime" class="clock-text">13:37</text>
-    <rect class="divider divider-top"/>
-    <text id="txtDate" class="date-text">MON JANUARY 01</text>
-    <rect class="divider divider-btm"/>
+        <section class="ring-section">
+            <arc class="ring-item" start-angle="0" />
+            <arc class="ring-item" start-angle="30" />
+            <arc class="ring-item" start-angle="60" />
+            <arc class="ring-item" start-angle="90" />
+            <arc class="ring-item" start-angle="120" />
+            <arc class="ring-item" start-angle="150" />
+            <arc class="ring-item" start-angle="180" />
+            <arc class="ring-item" start-angle="210" />
+            <arc class="ring-item" start-angle="240" />
+            <arc class="ring-item" start-angle="270" />
+            <arc class="ring-item" start-angle="300" />
+            <arc class="ring-item" start-angle="330" />
+        </section>
 
-    <section class="stats">
-        <use id="iconHRM" href="#heart-beat"/>
-        <text id="txtHRM" class="stat-left"/>
+        <section class="ring-section">
+            <arc class="ring-item" start-angle="0" />
+            <arc class="ring-item" start-angle="30" />
+            <arc class="ring-item" start-angle="60" />
+            <arc class="ring-item" start-angle="90" />
+            <arc class="ring-item" start-angle="120" />
+            <arc class="ring-item" start-angle="150" />
+            <arc class="ring-item" start-angle="180" />
+            <arc class="ring-item" start-angle="210" />
+            <arc class="ring-item" start-angle="240" />
+            <arc class="ring-item" start-angle="270" />
+            <arc class="ring-item" start-angle="300" />
+            <arc class="ring-item" start-angle="330" />
+        </section>
 
-        <use id="stats-cycle" href="#cycleview">
-            <use href="#cycleview-item" class="cycle-item">
-                <image href="images/steps.png" class="image"/>
-                <text class="stat-right"/>
-            </use>
-            <use href="#cycleview-item" class="cycle-item">
-                <image href="images/calories.png" class="image"/>
-                <text class="stat-right"/>
-            </use>
-            <use href="#cycleview-item" class="cycle-item">
-                <image href="images/distance.png" class="image"/>
-                <text class="stat-right"/>
-            </use>
-            <use href="#cycleview-item" class="cycle-item">
-                <image href="images/floors.png" class="image"/>
-                <text class="stat-right"/>
-            </use>
-            <use href="#cycleview-item" class="cycle-item">
-                <image href="images/active_minutes.png" class="image"/>
-                <text class="stat-right"/>
-            </use>
-        </use>
+        <section class="ring-section">
+            <arc class="ring-item" start-angle="0" />
+            <arc class="ring-item" start-angle="30" />
+            <arc class="ring-item" start-angle="60" />
+            <arc class="ring-item" start-angle="90" />
+            <arc class="ring-item" start-angle="120" />
+            <arc class="ring-item" start-angle="150" />
+            <arc class="ring-item" start-angle="180" />
+            <arc class="ring-item" start-angle="210" />
+            <arc class="ring-item" start-angle="240" />
+            <arc class="ring-item" start-angle="270" />
+            <arc class="ring-item" start-angle="300" />
+            <arc class="ring-item" start-angle="330" />
+        </section>
+
+        <section class="ring-section">
+            <arc class="ring-item" start-angle="0" />
+            <arc class="ring-item" start-angle="30" />
+            <arc class="ring-item" start-angle="60" />
+            <arc class="ring-item" start-angle="90" />
+            <arc class="ring-item" start-angle="120" />
+            <arc class="ring-item" start-angle="150" />
+            <arc class="ring-item" start-angle="180" />
+            <arc class="ring-item" start-angle="210" />
+            <arc class="ring-item" start-angle="240" />
+            <arc class="ring-item" start-angle="270" />
+            <arc class="ring-item" start-angle="300" />
+            <arc class="ring-item" start-angle="330" />
+        </section>
+
     </section>
+
+    <section class="main-section">
+
+        <section class="ring-section">
+            <arc class="ring-item2" start-angle="0" />
+            <arc class="ring-item2" start-angle="30" />
+            <arc class="ring-item2" start-angle="60" />
+            <arc class="ring-item2" start-angle="90" />
+            <arc class="ring-item2" start-angle="120" />
+            <arc class="ring-item2" start-angle="150" />
+            <arc class="ring-item2" start-angle="180" />
+            <arc class="ring-item2" start-angle="210" />
+            <arc class="ring-item2" start-angle="240" />
+            <arc class="ring-item2" start-angle="270" />
+            <arc class="ring-item2" start-angle="300" />
+            <arc class="ring-item2" start-angle="330" />
+        </section>
+
+        <section class="ring-section">
+            <arc class="ring-item2" start-angle="0" />
+            <arc class="ring-item2" start-angle="30" />
+            <arc class="ring-item2" start-angle="60" />
+            <arc class="ring-item2" start-angle="90" />
+            <arc class="ring-item2" start-angle="120" />
+            <arc class="ring-item2" start-angle="150" />
+            <arc class="ring-item2" start-angle="180" />
+            <arc class="ring-item2" start-angle="210" />
+            <arc class="ring-item2" start-angle="240" />
+            <arc class="ring-item2" start-angle="270" />
+            <arc class="ring-item2" start-angle="300" />
+            <arc class="ring-item2" start-angle="330" />
+        </section>
+
+        <section class="ring-section">
+            <arc class="ring-item2" start-angle="0" />
+            <arc class="ring-item2" start-angle="30" />
+            <arc class="ring-item2" start-angle="60" />
+            <arc class="ring-item2" start-angle="90" />
+            <arc class="ring-item2" start-angle="120" />
+            <arc class="ring-item2" start-angle="150" />
+            <arc class="ring-item2" start-angle="180" />
+            <arc class="ring-item2" start-angle="210" />
+            <arc class="ring-item2" start-angle="240" />
+            <arc class="ring-item2" start-angle="270" />
+            <arc class="ring-item2" start-angle="300" />
+            <arc class="ring-item2" start-angle="330" />
+        </section>
+
+        <section class="ring-section">
+            <arc class="ring-item2" start-angle="0" />
+            <arc class="ring-item2" start-angle="30" />
+            <arc class="ring-item2" start-angle="60" />
+            <arc class="ring-item2" start-angle="90" />
+            <arc class="ring-item2" start-angle="120" />
+            <arc class="ring-item2" start-angle="150" />
+            <arc class="ring-item2" start-angle="180" />
+            <arc class="ring-item2" start-angle="210" />
+            <arc class="ring-item2" start-angle="240" />
+            <arc class="ring-item2" start-angle="270" />
+            <arc class="ring-item2" start-angle="300" />
+            <arc class="ring-item2" start-angle="330" />
+        </section>
+
+    </section>
+
+    <section class="footer-section">
+
+        <section class="ring-section">
+            <arc class="ring-item3" start-angle="0" />
+            <arc class="ring-item3" start-angle="30" />
+            <arc class="ring-item3" start-angle="60" />
+            <arc class="ring-item3" start-angle="90" />
+            <arc class="ring-item3" start-angle="120" />
+            <arc class="ring-item3" start-angle="150" />
+            <arc class="ring-item3" start-angle="180" />
+            <arc class="ring-item3" start-angle="210" />
+            <arc class="ring-item3" start-angle="240" />
+            <arc class="ring-item3" start-angle="270" />
+            <arc class="ring-item3" start-angle="300" />
+            <arc class="ring-item3" start-angle="330" />
+        </section>
+
+        <section class="ring-section">
+            <arc class="ring-item3" start-angle="0" />
+            <arc class="ring-item3" start-angle="30" />
+            <arc class="ring-item3" start-angle="60" />
+            <arc class="ring-item3" start-angle="90" />
+            <arc class="ring-item3" start-angle="120" />
+            <arc class="ring-item3" start-angle="150" />
+            <arc class="ring-item3" start-angle="180" />
+            <arc class="ring-item3" start-angle="210" />
+            <arc class="ring-item3" start-angle="240" />
+            <arc class="ring-item3" start-angle="270" />
+            <arc class="ring-item3" start-angle="300" />
+            <arc class="ring-item3" start-angle="330" />
+        </section>
+
+        <section class="ring-section">
+            <arc class="ring-item3" start-angle="0" />
+            <arc class="ring-item3" start-angle="30" />
+            <arc class="ring-item3" start-angle="60" />
+            <arc class="ring-item3" start-angle="90" />
+            <arc class="ring-item3" start-angle="120" />
+            <arc class="ring-item3" start-angle="150" />
+            <arc class="ring-item3" start-angle="180" />
+            <arc class="ring-item3" start-angle="210" />
+            <arc class="ring-item3" start-angle="240" />
+            <arc class="ring-item3" start-angle="270" />
+            <arc class="ring-item3" start-angle="300" />
+            <arc class="ring-item3" start-angle="330" />
+        </section>
+
+        <section class="ring-section">
+            <arc class="ring-item3" start-angle="0" />
+            <arc class="ring-item3" start-angle="30" />
+            <arc class="ring-item3" start-angle="60" />
+            <arc class="ring-item3" start-angle="90" />
+            <arc class="ring-item3" start-angle="120" />
+            <arc class="ring-item3" start-angle="150" />
+            <arc class="ring-item3" start-angle="180" />
+            <arc class="ring-item3" start-angle="210" />
+            <arc class="ring-item3" start-angle="240" />
+            <arc class="ring-item3" start-angle="270" />
+            <arc class="ring-item3" start-angle="300" />
+            <arc class="ring-item3" start-angle="330" />
+        </section>
+    </section>
+
 </svg>
