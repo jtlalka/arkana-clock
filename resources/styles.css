@@ -1,61 +1,106 @@
+/****[ screen ]************************************************************************/
 .screen {
     width: 100%;
     height: 100%;
     fill: #000000;
 }
 
-.header-section {
+.header {
     x: 50%-140;
     y: 0;
     width: 280;
     height: 30%;
 }
 
-.main-section {
+.center {
     x: 50%-140;
     y: 30%;
     width: 280;
     height: 40%;
 }
 
-.footer-section {
+.footer {
     x: 50%-145;
     y: 70%;
     width: 280;
     height: 30%;
 }
 
+/****[ progress counter ]**************************************************************/
+.progress-counter {
+    font-family: System-Regular;
+    font-size: 12;
+    text-length: 10;
+    width: 40;
+    height: 10;
+    fill: fb-green;
+}
+
+.progress-counter-start {
+    x: 2;
+    y: 12;
+    text-anchor: start;
+}
+
+.progress-counter-end {
+    x: 100%-2;
+    y: 12;
+    text-anchor: end;
+}
+
+/****[ progress bar ]******************************************************************/
+.progress-bar {
+    width: 20;
+    height: 100%;
+}
+
+.progress-bar-start {
+    x: 0;
+    y: 15;
+}
+
+.progress-bar-end {
+    x: 100%-20;
+    y: 15;
+}
+
+.progress-bar-item {
+    y: $+2;
+    height: 10;
+    fill: 'fb-extra-dark-gray';
+}
+
+/****[ rings ]*************************************************************************/
 .ring-section {
     x: $+10;
     y: 0;
     width: 60;
-    height: 60;
+    height: 70;
+}
+
+.ring-text {
+    font-family: System-Regular;
+    font-size: 12;
+    text-anchor: middle;
+    text-length: 10;
+    x: 50%;
+    y: 0;
+    width: 100%;
+    height: 10;
+    fill: fb-green;
 }
 
 .ring-item {
-    width: 100%;
-    height: 100%;
-    arc-width: 5;
-    sweep-angle:25;
-    fill: 'fb-extra-dark-gray';
-}
-
-.ring-item2 {
-    width: 100%;
-    height: 100%;
-    arc-width: 15;
-    sweep-angle:25;
-    fill: 'fb-extra-dark-gray';
-}
-
-.ring-item3 {
-    width: 100%;
-    height: 100%;
+    y: 10;
+    width: 60;
+    height: 60;
     arc-width: 20;
     sweep-angle:25;
     fill: 'fb-extra-dark-gray';
 }
 
+
+/****[ test ]**************************************************************************/
 .test {
     width: 100%;
     height: 100%;
