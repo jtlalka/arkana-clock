@@ -35,7 +35,98 @@
     </section>
 
     <section class="header">
-        <!-- Date -->
+
+        <section class="date-block">
+            <rect x="0" y="0" class="date-dot" />
+            <rect x="$+1" y="0" class="date-x-line" />
+            <rect x="$+1" y="0" class="date-dot" />
+
+            <rect x="0" y="5" class="date-y-line" />
+            <rect x="$+1" y="5" class="date-placeholder" />
+            <rect x="$+1" y="5" class="date-y-line" />
+
+            <rect x="0" y="22" class="date-dot" />
+            <rect x="$+1" y="22" class="date-x-line" />
+            <rect x="$+1" y="22" class="date-dot" />
+
+            <rect x="0" y="27" class="date-y-line" />
+            <rect x="$+1" y="27" class="date-placeholder" />
+            <rect x="$+1" y="27" class="date-y-line" />
+
+            <rect x="0" y="44" class="date-dot" />
+            <rect x="$+1" y="44" class="date-x-line" />
+            <rect x="$+1" y="44" class="date-dot" />
+        </section>
+
+        <section class="date-block">
+            <rect x="0" y="0" class="date-dot" />
+            <rect x="$+1" y="0" class="date-x-line" />
+            <rect x="$+1" y="0" class="date-dot" />
+
+            <rect x="0" y="5" class="date-y-line" />
+            <rect x="$+1" y="5" class="date-placeholder" />
+            <rect x="$+1" y="5" class="date-y-line" />
+
+            <rect x="0" y="22" class="date-dot" />
+            <rect x="$+1" y="22" class="date-x-line" />
+            <rect x="$+1" y="22" class="date-dot" />
+
+            <rect x="0" y="27" class="date-y-line" />
+            <rect x="$+1" y="27" class="date-placeholder" />
+            <rect x="$+1" y="27" class="date-y-line" />
+
+            <rect x="0" y="44" class="date-dot" />
+            <rect x="$+1" y="44" class="date-x-line" />
+            <rect x="$+1" y="44" class="date-dot" />
+        </section>
+
+        <section class="date-separator">
+            <rect x="0" y="44" class="date-dash" />
+        </section>
+
+        <section class="date-block">
+            <rect x="0" y="0" class="date-dot" />
+            <rect x="$+1" y="0" class="date-x-line" />
+            <rect x="$+1" y="0" class="date-dot" />
+
+            <rect x="0" y="5" class="date-y-line" />
+            <rect x="$+1" y="5" class="date-placeholder" />
+            <rect x="$+1" y="5" class="date-y-line" />
+
+            <rect x="0" y="22" class="date-dot" />
+            <rect x="$+1" y="22" class="date-x-line" />
+            <rect x="$+1" y="22" class="date-dot" />
+
+            <rect x="0" y="27" class="date-y-line" />
+            <rect x="$+1" y="27" class="date-placeholder" />
+            <rect x="$+1" y="27" class="date-y-line" />
+
+            <rect x="0" y="44" class="date-dot" />
+            <rect x="$+1" y="44" class="date-x-line" />
+            <rect x="$+1" y="44" class="date-dot" />
+        </section>
+
+        <section class="date-block">
+            <rect x="0" y="0" class="date-dot" />
+            <rect x="$+1" y="0" class="date-x-line" />
+            <rect x="$+1" y="0" class="date-dot" />
+
+            <rect x="0" y="5" class="date-y-line" />
+            <rect x="$+1" y="5" class="date-placeholder" />
+            <rect x="$+1" y="5" class="date-y-line" />
+
+            <rect x="0" y="22" class="date-dot" />
+            <rect x="$+1" y="22" class="date-x-line" />
+            <rect x="$+1" y="22" class="date-dot" />
+
+            <rect x="0" y="27" class="date-y-line" />
+            <rect x="$+1" y="27" class="date-placeholder" />
+            <rect x="$+1" y="27" class="date-y-line" />
+
+            <rect x="0" y="44" class="date-dot" />
+            <rect x="$+1" y="44" class="date-x-line" />
+            <rect x="$+1" y="44" class="date-dot" />
+        </section>
     </section>
 
     <section class="center">

@@ -6,9 +6,9 @@
 }
 
 .header {
-    x: 50%-140;
+    x: 50%-68;
     y: 0;
-    width: 280;
+    width: 140;
     height: 30%;
 }
 
@@ -144,6 +144,50 @@
     fill: 'fb-extra-dark-gray';
 }
 
+/****[ date ]**************************************************************************/
+.date-block {
+    x: $;
+    y: 0;
+    width: 30;
+    height: 100%;
+}
+
+.date-block .date-dot {
+    width: 4;
+    height: 4;
+    fill: 'fb-extra-dark-gray';
+}
+
+.date-block .date-x-line {
+    width: 16;
+    height: 4;
+    fill: 'fb-extra-dark-gray';
+}
+
+.date-block .date-y-line {
+    width: 4;
+    height: 16;
+    fill: 'fb-extra-dark-gray';
+}
+
+.date-block .date-placeholder {
+    width: 16;
+    height: 16;
+    fill: transparent;
+}
+
+.date-separator {
+    x: $;
+    y: 0;
+    width: 8;
+    height: 100%;
+}
+
+.date-separator .date-dash {
+    width: 4;
+    height: 4;
+    fill: 'fb-extra-dark-gray';
+}
 
 /****[ test ]**************************************************************************/
 .test {
