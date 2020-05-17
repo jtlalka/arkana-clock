@@ -1,4 +1,4 @@
-import {me} from "appbit";
+import { me } from "appbit";
 import * as fs from "fs";
 import * as messaging from "messaging";
 

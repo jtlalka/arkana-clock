@@ -1,11 +1,11 @@
-<svg class="screen">
+<svg id="screen">
 
     <!-- Progress counters -->
-    <text class="progress-counter progress-counter-start">123</text>
-    <text class="progress-counter progress-counter-end">88</text>
+    <text class="progress-counter progress-counter-start" id="step-counter">--</text>
+    <text class="progress-counter progress-counter-end" id="heart-counter">--</text>
 
     <!-- Progress bars -->
-    <section class="progress-bar progress-bar-start">
+    <section class="progress-bar progress-bar-start" id="step-level">
         <rect width="16" />
         <rect width="15" />
         <rect width="14" />
@@ -19,7 +19,7 @@
         <rect width="6" />
         <rect width="5" />
     </section>
-    <section class="progress-bar progress-bar-end">
+    <section class="progress-bar progress-bar-end" id="heart-level">
         <rect x="4" width="16" />
         <rect x="5" width="15" />
         <rect x="6" width="14" />
@@ -34,7 +34,7 @@
         <rect x="15" width="5" />
     </section>
 
-    <section class="header">
+    <section class="header" id="date-display">
 
         <section class="date-block">
             <rect x="0" y="0" class="date-dot" />
@@ -129,7 +129,7 @@
         </section>
     </section>
 
-    <section class="center">
+    <section class="center" id="time-display">
         <section class="time-block">
             <rect x="0" y="0" class="time-dot" />
             <rect x="$+1" y="0" class="time-x-line" />
@@ -227,7 +227,7 @@
 
     <section class="footer">
 
-        <section class="ring-sensor">
+        <section class="ring-sensor" id="step-sensor">
             <text>STEP</text>
 
             <arc start-angle="0" />
@@ -244,7 +244,7 @@
             <arc start-angle="330" />
         </section>
 
-        <section class="ring-sensor">
+        <section class="ring-sensor" id="floor-sensor">
             <text>FLRS</text>
 
             <arc start-angle="0" />
@@ -261,7 +261,7 @@
             <arc start-angle="330" />
         </section>
 
-        <section class="ring-sensor">
+        <section class="ring-sensor" id="calorie-sensor">
             <text>CALS</text>
 
             <arc start-angle="0" />
@@ -278,7 +278,7 @@
             <arc start-angle="330" />
         </section>
 
-        <section class="ring-sensor">
+        <section class="ring-sensor" id="activity-sensor">
             <text>ACTX</text>
 
             <arc start-angle="0" />

@@ -1,5 +1,7 @@
 # Idea
 .idea/
+!.idea/codeStyles/
+!.idea/inspectionProfiles/
 
 # Fitbit
 build/

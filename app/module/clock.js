@@ -1,8 +1,7 @@
 import clock from "clock";
-import {preferences} from "user-settings";
+import { preferences } from "user-settings";
 
-import {days, months, monthsShort} from "./locales/en.js";
-import * as util from "../../common/numberUtils";
+import { days, months, monthsShort } from "../locales/en.js";
 
 let dateFormat, clockCallback;
 
@@ -16,10 +15,10 @@ export function initialize(granularity, dateFormatString, callback) {
 function tickHandler(evt) {
     let today = evt.date;
     let dayName = days[today.getDay()];
-    let month = util.zeroPad(today.getMonth() + 1);
+    let month = zeroPad(today.getMonth() + 1);
     let monthName = months[today.getMonth()];
     let monthNameShort = monthsShort[today.getMonth()];
-    let dayNumber = util.zeroPad(today.getDate());
+    let dayNumber = zeroPad(today.getDate());
 
     let hours = today.getHours();
     if (preferences.clockDisplay === "12h") {
@@ -27,9 +26,9 @@ function tickHandler(evt) {
         hours = hours % 12 || 12;
     } else {
         // 24h format
-        hours = util.zeroPad(hours);
+        hours = zeroPad(hours);
     }
-    let mins = util.zeroPad(today.getMinutes());
+    let mins = zeroPad(today.getMinutes());
 
     let timeString = `${hours}:${mins}`;
     let dateString = today;
@@ -46,4 +45,12 @@ function tickHandler(evt) {
             break;
     }
     clockCallback({time: timeString, date: dateString});
+}
+
+function zeroPad(num) {
+    if (num < 10) {
+        return "0" + num;
+    } else {
+        return num;
+    }
 }

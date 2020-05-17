@@ -1,7 +1,7 @@
-import {me} from "appbit";
+import { me } from "appbit";
 import clock from "clock";
-import {today, goals} from "user-activity";
-import {units} from "user-settings";
+import { today, goals } from "user-activity";
+import { units } from "user-settings";
 
 let activityCallback;
 
