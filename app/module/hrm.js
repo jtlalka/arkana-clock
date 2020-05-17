@@ -1,7 +1,7 @@
-import {me} from "appbit";
-import {display} from "display";
-import {HeartRateSensor} from "heart-rate";
-import {user} from "user-profile";
+import { me } from "appbit";
+import { display } from "display";
+import { HeartRateSensor } from "heart-rate";
+import { user } from "user-profile";
 
 let hrm, watchID, hrmCallback;
 let lastReading = 0;

@@ -5,18 +5,19 @@ import * as messaging from "messaging";
 const SETTINGS_TYPE = "cbor";
 const SETTINGS_FILE = "settings.cbor";
 
-let settings, onsettingschange;
+let settings;
+let settingsChangeListener;
 
 export function initialize(callback) {
     settings = loadSettings();
-    onsettingschange = callback;
-    onsettingschange(settings);
+    settingsChangeListener = callback;
+    settingsChangeListener(settings);
 }
 
 // Received message containing settings data
 messaging.peerSocket.addEventListener("message", function (evt) {
     settings[evt.data.key] = evt.data.value;
-    onsettingschange(settings);
+    settingsChangeListener(settings);
 })
 
 // Register for the unload event

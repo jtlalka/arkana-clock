@@ -1,8 +1,8 @@
 <svg id="screen">
 
     <!-- Progress counters -->
-    <text class="progress-counter progress-counter-start" id="step-counter">--</text>
-    <text class="progress-counter progress-counter-end" id="heart-counter">--</text>
+    <text class="progress-counter progress-counter-start" id="step-counter" />
+    <text class="progress-counter progress-counter-end" id="heart-counter" />
 
     <!-- Progress bars -->
     <section class="progress-bar progress-bar-start" id="step-level">
@@ -129,8 +129,8 @@
         </section>
     </section>
 
-    <section class="center" id="time-display">
-        <section class="time-block">
+    <section class="center">
+        <section class="time-block" id="hour-first-digit">
             <rect x="0" y="0" class="time-dot" />
             <rect x="$+1" y="0" class="time-x-line" />
             <rect x="$+1" y="0" class="time-dot" />
@@ -152,7 +152,7 @@
             <rect x="$+1" y="54" class="time-dot" />
         </section>
 
-        <section class="time-block">
+        <section class="time-block" id="hour-second-digit">
             <rect x="0" y="0" class="time-dot" />
             <rect x="$+1" y="0" class="time-x-line" />
             <rect x="$+1" y="0" class="time-dot" />

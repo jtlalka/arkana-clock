@@ -1,9 +1,10 @@
 import document from "document";
 
 import * as simpleActivity from "./module/activity";
-import * as simpleClock from "./module/clock";
+import * as clockModule from "./module/clock";
 import * as simpleHRM from "./module/hrm";
 import * as simpleSettings from "./module/settings";
+import * as utils from "../common/utils"
 
 let background = document.getElementById("screen");
 let stepCounter = document.getElementById("step-counter");
@@ -11,50 +12,69 @@ let stepLevel = document.getElementById("step-level");
 let heartCounter = document.getElementById("heart-counter");
 let heartLevel = document.getElementById("heart-level");
 let dateDisplay = document.getElementById("date-display");
-let timeDisplay = document.getElementById("time-display");
+let hour1Display = document.getElementById("hour-first-digit");
+let hour2Display = document.getElementById("hour-second-digit");
 let stepSensor = document.getElementById("step-sensor");
 let floorSensor = document.getElementById("floor-sensor");
 let calorieSensor = document.getElementById("calorie-sensor");
 let activitySensor = document.getElementById("activity-sensor");
 
-
-/* --------- CLOCK ---------- */
-function clockCallback(data) {
-    //console.log("Clock date: " + data.time + " " + data.date)
+let numberMatrix = {
+    '0': [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12],
+    '1': [2, 4, 7, 9],
+    '2': [0, 1, 2, 4, 5, 6, 7, 8, 10, 11, 12],
+    '3': [0, 1, 2, 4, 5, 6, 7, 9, 10, 11, 12],
+    '4': [0, 2, 3, 4, 5, 6, 7, 9, 12],
+    '5': [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 12],
+    '6': [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12],
+    '7': [0, 1, 2, 4, 7, 9, 12],
+    '8': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    '9': [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12]
 }
 
-simpleClock.initialize("minutes", "longDate", clockCallback);
+/* --------- CLOCK ---------- */
+clockModule.initialize("minutes", function (data) {
+    let digit = utils.getDigit(data.hour, 1)
+    let matrix = numberMatrix[digit];
+
+    for (let i = 0; i < hour1Display.children.length; i++) {
+        if (utils.isInArray(i, matrix)) {
+            hour1Display.children[i].style.fill = 'red';
+        } else {
+            hour1Display.children[i].style.fill = 'transparent';
+        }
+    }
+});
 
 /* ------- ACTIVITY --------- */
-function activityCallback(data) {
+simpleActivity.initialize("seconds", function (data) {
+    stepCounter.text = data.steps.pretty;
+
     //console.log("Activity steps date: " + data.steps.pretty)
     //console.log("Activity calories date: " + data.calories.pretty)
     //console.log("Activity distance date: " + data.distance.pretty)
     //console.log("Activity elevationGain date: " + data.elevationGain.pretty)
     //console.log("Activity activeMinutes date: " + data.activeMinutes.pretty)
-}
-
-simpleActivity.initialize("seconds", activityCallback);
+});
 
 /* -------- HRM ------------- */
-function hrmCallback(data) {
-    //console.log("HRM date: " + data.bpm + " " + data.zone)
-}
+simpleHRM.initialize(function (data) {
+    heartCounter.text = data.bpm;
 
-simpleHRM.initialize(hrmCallback);
+    //console.log("HRM date: " + data.bpm + " " + data.zone)
+});
 
 /* -------- SETTINGS -------- */
-function settingsCallback(data) {
-    if (!data) {
-        return;
-    }
-    if (data.backgroundColor) {
-        background.style.fill = data.backgroundColor;
-    }
-    if (data.foregroundColor) {
-        stepCounter.style.fill = data.foregroundColor;
-        heartCounter.style.fill = data.foregroundColor;
-    }
-}
+simpleSettings.initialize(function (data) {
+    console.log("Settings date: " + data)
 
-simpleSettings.initialize(settingsCallback);
+    if (data) {
+        if (data['backgroundColor']) {
+            background.style.fill = data['backgroundColor'];
+        }
+        if (data['foregroundColor']) {
+            stepCounter.style.fill = data['foregroundColor'];
+            heartCounter.style.fill = data['foregroundColor'];
+        }
+    }
+});

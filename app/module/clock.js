@@ -1,56 +1,30 @@
-import clock from "clock";
+import { clock } from "clock";
 import { preferences } from "user-settings";
 
-import { days, months, monthsShort } from "../locales/en.js";
-
-let dateFormat, clockCallback;
-
-export function initialize(granularity, dateFormatString, callback) {
-    dateFormat = dateFormatString;
+/**
+ * Clock listener.
+ *
+ * @param granularity Granularity at which clockCallback should be emitted, values: hours, minutes, seconds, off.
+ * @param clockCallback Callback with data time information.
+ */
+export function initialize(granularity, clockCallback) {
     clock.granularity = granularity;
-    clockCallback = callback;
-    clock.addEventListener("tick", tickHandler);
+    clock.addEventListener("tick", function (evt) {
+        clockCallback({
+            day: evt.date.getDate(),
+            month: evt.date.getMonth() + 1,
+            year: evt.date.getFullYear(),
+            hour: getUserHoursFormat(evt.date.getHours()),
+            minute: evt.date.getMinutes(),
+            second: evt.date.getSeconds()
+        });
+    });
 }
 
-function tickHandler(evt) {
-    let today = evt.date;
-    let dayName = days[today.getDay()];
-    let month = zeroPad(today.getMonth() + 1);
-    let monthName = months[today.getMonth()];
-    let monthNameShort = monthsShort[today.getMonth()];
-    let dayNumber = zeroPad(today.getDate());
-
-    let hours = today.getHours();
-    if (preferences.clockDisplay === "12h") {
-        // 12h format
-        hours = hours % 12 || 12;
+function getUserHoursFormat(hour) {
+    if (preferences['clockDisplay'] === "12h") {
+        return hour % 12 || 12;
     } else {
-        // 24h format
-        hours = zeroPad(hours);
-    }
-    let mins = zeroPad(today.getMinutes());
-
-    let timeString = `${hours}:${mins}`;
-    let dateString = today;
-
-    switch (dateFormat) {
-        case "shortDate":
-            dateString = `${dayNumber} ${monthNameShort}`;
-            break;
-        case "mediumDate":
-            dateString = `${dayNumber} ${monthName}`;
-            break;
-        case "longDate":
-            dateString = `${dayName} ${monthName} ${dayNumber}`;
-            break;
-    }
-    clockCallback({time: timeString, date: dateString});
-}
-
-function zeroPad(num) {
-    if (num < 10) {
-        return "0" + num;
-    } else {
-        return num;
+        return hour;
     }
 }
