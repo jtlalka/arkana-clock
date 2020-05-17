@@ -13,9 +13,9 @@
 }
 
 .center {
-    x: 50%-140;
+    x: 50%-77;
     y: 30%;
-    width: 280;
+    width: 160;
     height: 40%;
 }
 
@@ -36,13 +36,13 @@
     fill: fb-green;
 }
 
-.progress-counter-start {
+.progress-counter.progress-counter-start {
     x: 2;
     y: 12;
     text-anchor: start;
 }
 
-.progress-counter-end {
+.progress-counter.progress-counter-end {
     x: 100%-2;
     y: 12;
     text-anchor: end;
@@ -54,43 +54,43 @@
     height: 100%;
 }
 
-.progress-bar-start {
+.progress-bar.progress-bar-start {
     x: 0;
     y: 15;
 }
 
-.progress-bar-end {
+.progress-bar.progress-bar-end {
     x: 100%-20;
     y: 15;
 }
 
-.progress-bar-item {
+.progress-bar rect {
     y: $+2;
     height: 10;
     fill: 'fb-extra-dark-gray';
 }
 
 /****[ rings ]*************************************************************************/
-.ring-section {
+.ring-sensor {
     x: $+10;
     y: 0;
     width: 60;
     height: 70;
 }
 
-.ring-text {
+.ring-sensor text {
+    x: 50%;
+    y: 5;
     font-family: System-Regular;
     font-size: 12;
     text-anchor: middle;
     text-length: 10;
-    x: 50%;
-    y: 0;
     width: 100%;
     height: 10;
     fill: fb-green;
 }
 
-.ring-item {
+.ring-sensor arc {
     y: 10;
     width: 60;
     height: 60;
@@ -99,12 +99,57 @@
     fill: 'fb-extra-dark-gray';
 }
 
+/****[ time ]**************************************************************************/
+.time-block {
+    x: $;
+    y: 0;
+    width: 36;
+    height: 100%;
+}
+
+.time-block .time-dot {
+    width: 5;
+    height: 5;
+    fill: 'fb-extra-dark-gray';
+}
+
+.time-block .time-x-line {
+    width: 20;
+    height: 5;
+    fill: 'fb-extra-dark-gray';
+}
+
+.time-block .time-y-line {
+    width: 5;
+    height: 20;
+    fill: 'fb-extra-dark-gray';
+}
+
+.time-block .time-placeholder {
+    width: 20;
+    height: 20;
+    fill: transparent;
+}
+
+.time-separator {
+    x: $;
+    y: 0;
+    width: 9;
+    height: 100%;
+}
+
+.time-separator .time-dot {
+    width: 5;
+    height: 5;
+    fill: 'fb-extra-dark-gray';
+}
+
 
 /****[ test ]**************************************************************************/
 .test {
     width: 100%;
     height: 100%;
-    fill: #005500;
+    fill: #FA1E43;
 }
 
 .clock-text {
