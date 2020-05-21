@@ -1,6 +1,6 @@
 <svg>
     <defs>
-        <link rel="stylesheet" href="styles/styles.css" />
+        <link rel="stylesheet" href="styles/index.css" />
         <link rel="stylesheet" href="styles/widgets.css" />
         <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
         <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.gui" />
@@ -45,8 +45,8 @@
 
         <!-- Large separator -->
         <symbol id="large-separator">
-            <rect x="0" y="21" class="digit-dot" />
-            <rect x="0" y="33" class="digit-dot" />
+            <rect x="3" y="21" class="digit-dot" />
+            <rect x="3" y="33" class="digit-dot" />
         </symbol>
 
     </defs>

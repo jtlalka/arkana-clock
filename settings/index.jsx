@@ -66,4 +66,5 @@ function mySettings(props) {
     );
 }
 
+// noinspection JSUnresolvedFunction
 registerSettingsPage(mySettings);

@@ -1,10 +1,10 @@
 import document from "document";
 
-import * as simpleActivity from "./module/activity";
-import * as clockModule from "./module/clock";
-import * as simpleHRM from "./module/hrm";
-import * as simpleSettings from "./module/settings";
-import * as utils from "../common/utils"
+import * as simpleActivity from "./platform/activity";
+import * as clockModule from "./platform/clock";
+import * as simpleHRM from "./platform/hrm";
+import * as simpleSettings from "./platform/settings";
+import * as display from "./module/display";
 
 let background = document.getElementById("screen");
 let stepCounter = document.getElementById("step-counter");
@@ -12,45 +12,21 @@ let stepProgress = document.getElementById("step-progress");
 let heartCounter = document.getElementById("heart-counter");
 let heartProgress = document.getElementById("heart-progress");
 let hour1Display = document.getElementById("h1-display");
-let hour2Display = document.getElementById("h2-display");
+let hour0Display = document.getElementById("h0-display");
+let timeSepDisplay = document.getElementById("hm-display");
+let minute1Display = document.getElementById("m1-display");
+let minute0Display = document.getElementById("m0-display");
 let stepSensor = document.getElementById("step-sensor");
 let floorSensor = document.getElementById("floor-sensor");
 let calorieSensor = document.getElementById("calorie-sensor");
 let activitySensor = document.getElementById("activity-sensor");
 
-let numberMatrix = {
-    '0': [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12],
-    '1': [2, 4, 7, 9],
-    '2': [0, 1, 2, 4, 5, 6, 7, 8, 10, 11, 12],
-    '3': [0, 1, 2, 4, 5, 6, 7, 9, 10, 11, 12],
-    '4': [0, 2, 3, 4, 5, 6, 7, 9, 12],
-    '5': [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 12],
-    '6': [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12],
-    '7': [0, 1, 2, 4, 7, 9, 12],
-    '8': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-    '9': [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12]
-}
 
 /* --------- CLOCK ---------- */
 clockModule.initialize("minutes", function (data) {
-    let digit = utils.getDigit(data.hour, 1)
-    let matrix = numberMatrix[digit];
-
-    for (let i = 0; i < hour1Display.children.length; i++) {
-        if (utils.isInArray(i, matrix)) {
-            hour1Display.children[i].style.fill = 'red';
-        } else {
-            hour1Display.children[i].style.fill = 'transparent';
-        }
-    }
-
-    for (let i = 0; i < stepProgress.children.length; i++) {
-        if (utils.isInArray(i, matrix)) {
-            stepProgress.children[i].style.fill = 'red';
-        } else {
-            stepProgress.children[i].style.fill = 'inherit';
-        }
-    }
+    display.render(data.hour, [hour1Display, hour0Display])
+    display.render(8, [timeSepDisplay])
+    display.render(data.minute, [minute1Display, minute0Display])
 });
 
 /* ------- ACTIVITY --------- */

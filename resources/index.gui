@@ -134,10 +134,10 @@
     <!-- Time -->
     <section class="center">
         <use id="h1-display" class="time-item" href="#large-number" />
-        <use id="h2-display" class="time-item" href="#large-number" />
-        <use class="time-item" href="#large-separator" />
+        <use id="h0-display" class="time-item" href="#large-number" />
+        <use id="hm-display" class="time-item" href="#large-separator" />
         <use id="m1-display" class="time-item" href="#large-number" />
-        <use id="m2-display" class="time-item" href="#large-number" />
+        <use id="m0-display" class="time-item" href="#large-number" />
     </section>
 
     <section class="footer">
