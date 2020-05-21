@@ -5,7 +5,7 @@
     <text id="heart-counter" class="progress-counter progress-counter-end" />
 
     <!-- Steps progress -->
-    <use href="#progress" id="step-progress" class="progress-start">
+    <use id="step-progress" href="#progress" class="progress-start">
         <set href="#progress-step-12" attributeName="x" to="0" />
         <set href="#progress-step-11" attributeName="x" to="0" />
         <set href="#progress-step-10" attributeName="x" to="0" />
@@ -21,7 +21,7 @@
     </use>
 
     <!-- Heart progress -->
-    <use href="#progress" id="heart-progress" class="progress-stop">
+    <use id="heart-progress" href="#progress" class="progress-stop">
         <set href="#progress-step-12" attributeName="x" to="4" />
         <set href="#progress-step-11" attributeName="x" to="5" />
         <set href="#progress-step-10" attributeName="x" to="6" />
@@ -131,100 +131,13 @@
         </section>
     </section>
 
+    <!-- Time -->
     <section class="center">
-        <section class="time-block" id="hour-first-digit">
-            <rect x="0" y="0" class="time-dot" />
-            <rect x="$+1" y="0" class="time-x-line" />
-            <rect x="$+1" y="0" class="time-dot" />
-
-            <rect x="0" y="6" class="time-y-line" />
-            <rect x="$+1" y="6" class="time-placeholder" />
-            <rect x="$+1" y="6" class="time-y-line" />
-
-            <rect x="0" y="27" class="time-dot" />
-            <rect x="$+1" y="27" class="time-x-line" />
-            <rect x="$+1" y="27" class="time-dot" />
-
-            <rect x="0" y="33" class="time-y-line" />
-            <rect x="$+1" y="33" class="time-placeholder" />
-            <rect x="$+1" y="33" class="time-y-line" />
-
-            <rect x="0" y="54" class="time-dot" />
-            <rect x="$+1" y="54" class="time-x-line" />
-            <rect x="$+1" y="54" class="time-dot" />
-        </section>
-
-        <section class="time-block" id="hour-second-digit">
-            <rect x="0" y="0" class="time-dot" />
-            <rect x="$+1" y="0" class="time-x-line" />
-            <rect x="$+1" y="0" class="time-dot" />
-
-            <rect x="0" y="6" class="time-y-line" />
-            <rect x="$+1" y="6" class="time-placeholder" />
-            <rect x="$+1" y="6" class="time-y-line" />
-
-            <rect x="0" y="27" class="time-dot" />
-            <rect x="$+1" y="27" class="time-x-line" />
-            <rect x="$+1" y="27" class="time-dot" />
-
-            <rect x="0" y="33" class="time-y-line" />
-            <rect x="$+1" y="33" class="time-placeholder" />
-            <rect x="$+1" y="33" class="time-y-line" />
-
-            <rect x="0" y="54" class="time-dot" />
-            <rect x="$+1" y="54" class="time-x-line" />
-            <rect x="$+1" y="54" class="time-dot" />
-        </section>
-
-        <section class="time-separator">
-            <rect x="0" y="21" class="time-dot" />
-            <rect x="0" y="33" class="time-dot" />
-        </section>
-
-        <section class="time-block">
-            <rect x="0" y="0" class="time-dot" />
-            <rect x="$+1" y="0" class="time-x-line" />
-            <rect x="$+1" y="0" class="time-dot" />
-
-            <rect x="0" y="6" class="time-y-line" />
-            <rect x="$+1" y="6" class="time-placeholder" />
-            <rect x="$+1" y="6" class="time-y-line" />
-
-            <rect x="0" y="27" class="time-dot" />
-            <rect x="$+1" y="27" class="time-x-line" />
-            <rect x="$+1" y="27" class="time-dot" />
-
-            <rect x="0" y="33" class="time-y-line" />
-            <rect x="$+1" y="33" class="time-placeholder" />
-            <rect x="$+1" y="33" class="time-y-line" />
-
-            <rect x="0" y="54" class="time-dot" />
-            <rect x="$+1" y="54" class="time-x-line" />
-            <rect x="$+1" y="54" class="time-dot" />
-        </section>
-
-        <section class="time-block">
-            <rect x="0" y="0" class="time-dot" />
-            <rect x="$+1" y="0" class="time-x-line" />
-            <rect x="$+1" y="0" class="time-dot" />
-
-            <rect x="0" y="6" class="time-y-line" />
-            <rect x="$+1" y="6" class="time-placeholder" />
-            <rect x="$+1" y="6" class="time-y-line" />
-
-            <rect x="0" y="27" class="time-dot" />
-            <rect x="$+1" y="27" class="time-x-line" />
-            <rect x="$+1" y="27" class="time-dot" />
-
-            <rect x="0" y="33" class="time-y-line" />
-            <rect x="$+1" y="33" class="time-placeholder" />
-            <rect x="$+1" y="33" class="time-y-line" />
-
-            <rect x="0" y="54" class="time-dot" />
-            <rect x="$+1" y="54" class="time-x-line" />
-            <rect x="$+1" y="54" class="time-dot" />
-        </section>
-
+        <use id="h1-display" class="time-item" href="#large-number" />
+        <use id="h2-display" class="time-item" href="#large-number" />
+        <use class="time-item" href="#large-separator" />
+        <use id="m1-display" class="time-item" href="#large-number" />
+        <use id="m2-display" class="time-item" href="#large-number" />
     </section>
 
     <section class="footer">

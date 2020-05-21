@@ -85,48 +85,12 @@
 }
 
 /****[ time ]*****************************************************************/
-.time-block {
-    x: $;
+.time-item {
+    x: $+4;
     y: 0;
-    width: 36;
-    height: 100%;
-}
-
-.time-block .time-dot {
-    width: 5;
-    height: 5;
     fill: 'fb-extra-dark-gray';
 }
 
-.time-block .time-x-line {
-    width: 20;
-    height: 5;
-    fill: 'fb-extra-dark-gray';
-}
-
-.time-block .time-y-line {
-    width: 5;
-    height: 20;
-    fill: 'fb-extra-dark-gray';
-}
-
-.time-block .time-placeholder {
-    width: 20;
-    height: 20;
-}
-
-.time-separator {
-    x: $;
-    y: 0;
-    width: 9;
-    height: 100%;
-}
-
-.time-separator .time-dot {
-    width: 5;
-    height: 5;
-    fill: 'fb-extra-dark-gray';
-}
 
 /****[ date ]*****************************************************************/
 .date-block {
