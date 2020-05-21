@@ -1,38 +1,40 @@
 <svg id="screen">
 
     <!-- Progress counters -->
-    <text class="progress-counter progress-counter-start" id="step-counter" />
-    <text class="progress-counter progress-counter-end" id="heart-counter" />
+    <text id="step-counter" class="progress-counter progress-counter-start" />
+    <text id="heart-counter" class="progress-counter progress-counter-end" />
 
-    <!-- Progress bars -->
-    <section class="progress-bar progress-bar-start" id="step-level">
-        <rect width="16" />
-        <rect width="15" />
-        <rect width="14" />
-        <rect width="13" />
-        <rect width="12" />
-        <rect width="11" />
-        <rect width="10" />
-        <rect width="9" />
-        <rect width="8" />
-        <rect width="7" />
-        <rect width="6" />
-        <rect width="5" />
-    </section>
-    <section class="progress-bar progress-bar-end" id="heart-level">
-        <rect x="4" width="16" />
-        <rect x="5" width="15" />
-        <rect x="6" width="14" />
-        <rect x="7" width="13" />
-        <rect x="8" width="12" />
-        <rect x="9" width="11" />
-        <rect x="10" width="10" />
-        <rect x="11" width="9" />
-        <rect x="12" width="8" />
-        <rect x="13" width="7" />
-        <rect x="14" width="6" />
-        <rect x="15" width="5" />
-    </section>
+    <!-- Steps progress -->
+    <use href="#progress" id="step-progress" class="progress-start">
+        <set href="#progress-step-12" attributeName="x" to="0" />
+        <set href="#progress-step-11" attributeName="x" to="0" />
+        <set href="#progress-step-10" attributeName="x" to="0" />
+        <set href="#progress-step-9" attributeName="x" to="0" />
+        <set href="#progress-step-8" attributeName="x" to="0" />
+        <set href="#progress-step-7" attributeName="x" to="0" />
+        <set href="#progress-step-6" attributeName="x" to="0" />
+        <set href="#progress-step-5" attributeName="x" to="0" />
+        <set href="#progress-step-4" attributeName="x" to="0" />
+        <set href="#progress-step-3" attributeName="x" to="0" />
+        <set href="#progress-step-2" attributeName="x" to="0" />
+        <set href="#progress-step-1" attributeName="x" to="0" />
+    </use>
+
+    <!-- Heart progress -->
+    <use href="#progress" id="heart-progress" class="progress-stop">
+        <set href="#progress-step-12" attributeName="x" to="4" />
+        <set href="#progress-step-11" attributeName="x" to="5" />
+        <set href="#progress-step-10" attributeName="x" to="6" />
+        <set href="#progress-step-9" attributeName="x" to="7" />
+        <set href="#progress-step-8" attributeName="x" to="8" />
+        <set href="#progress-step-7" attributeName="x" to="9" />
+        <set href="#progress-step-6" attributeName="x" to="10" />
+        <set href="#progress-step-5" attributeName="x" to="11" />
+        <set href="#progress-step-4" attributeName="x" to="12" />
+        <set href="#progress-step-3" attributeName="x" to="13" />
+        <set href="#progress-step-2" attributeName="x" to="14" />
+        <set href="#progress-step-1" attributeName="x" to="15" />
+    </use>
 
     <section class="header" id="date-display">
 

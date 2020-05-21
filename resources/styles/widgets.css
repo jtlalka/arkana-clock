@@ -1,0 +1,11 @@
+/****[ progress ]*************************************************************/
+#progress {
+    width: 20;
+    height: 100%;
+}
+
+#progress rect {
+    y: $+2;
+    height: 10;
+    fill: 'inherit';
+}

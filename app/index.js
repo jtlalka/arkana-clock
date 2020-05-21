@@ -8,9 +8,9 @@ import * as utils from "../common/utils"
 
 let background = document.getElementById("screen");
 let stepCounter = document.getElementById("step-counter");
-let stepLevel = document.getElementById("step-level");
+let stepProgress = document.getElementById("step-progress");
 let heartCounter = document.getElementById("heart-counter");
-let heartLevel = document.getElementById("heart-level");
+let heartProgress = document.getElementById("heart-progress");
 let dateDisplay = document.getElementById("date-display");
 let hour1Display = document.getElementById("hour-first-digit");
 let hour2Display = document.getElementById("hour-second-digit");
@@ -42,6 +42,14 @@ clockModule.initialize("minutes", function (data) {
             hour1Display.children[i].style.fill = 'red';
         } else {
             hour1Display.children[i].style.fill = 'transparent';
+        }
+    }
+
+    for (let i = 0; i < stepProgress.children.length; i++) {
+        if (utils.isInArray(i, matrix)) {
+            stepProgress.children[i].style.fill = 'red';
+        } else {
+            stepProgress.children[i].style.fill = 'inherit';
         }
     }
 });

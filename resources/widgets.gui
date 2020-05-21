@@ -1,23 +1,26 @@
 <svg>
     <defs>
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="styles/styles.css" />
+        <link rel="stylesheet" href="styles/widgets.css" />
         <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
         <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.gui" />
         <link rel="import" href="/mnt/sysassets/widgets/cycleview_widget.gui" />
 
-        <symbol id="heart-beat">
-            <g transform="translate(50%,50%)">
-                <image id="icon" x="-50%" y="-50%" href="images/heart_solid.png" />
-
-                <animateTransform
-                        attributeName="transform" attributeType="scale"
-                        begin="highlight" end="unload;unhighlight" to="0.85"
-                        repeatCount="indefinite" final="keep" />
-                <animateTransform
-                        attributeName="transform" attributeType="scale"
-                        begin="highlight+0.433" end="unload;unhighlight" to="1.0"
-                        repeatCount="indefinite" final="keep" />
-            </g>
+        <!-- Progress -->
+        <symbol id="progress">
+            <rect id="progress-step-12" width="16" />
+            <rect id="progress-step-11" width="15" />
+            <rect id="progress-step-10" width="14" />
+            <rect id="progress-step-9" width="13" />
+            <rect id="progress-step-8" width="12" />
+            <rect id="progress-step-7" width="11" />
+            <rect id="progress-step-6" width="10" />
+            <rect id="progress-step-5" width="9" />
+            <rect id="progress-step-4" width="8" />
+            <rect id="progress-step-3" width="7" />
+            <rect id="progress-step-2" width="6" />
+            <rect id="progress-step-1" width="5" />
         </symbol>
+
     </defs>
 </svg>
