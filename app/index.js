@@ -4,6 +4,7 @@ import * as simpleActivity from "./platform/activity";
 import * as clockModule from "./platform/clock";
 import * as simpleHRM from "./platform/hrm";
 import * as simpleSettings from "./platform/settings";
+import * as battery from "./platform/battery";
 import * as display from "./module/display";
 
 let background = document.getElementById("screen");
@@ -57,9 +58,14 @@ simpleActivity.initialize("seconds", function (data) {
 
 /* -------- HRM ------------- */
 simpleHRM.initialize(function (data) {
-    heartCounter.text = data.bpm;
+    //heartCounter.text = data.bpm;
 
     //console.log("HRM date: " + data.bpm + " " + data.zone)
+});
+
+/* -------- Battery ------------- */
+battery.initialize("minutes", function(data) {
+    heartCounter.text = Math.floor(data.level) + '%';
 });
 
 /* -------- SETTINGS -------- */
