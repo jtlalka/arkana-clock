@@ -36,108 +36,22 @@
         <set href="#progress-step-1" attributeName="x" to="15" />
     </use>
 
-    <section class="header" id="date-display">
-
-        <section class="date-block">
-            <rect x="0" y="0" class="date-dot" />
-            <rect x="$+1" y="0" class="date-x-line" />
-            <rect x="$+1" y="0" class="date-dot" />
-
-            <rect x="0" y="5" class="date-y-line" />
-            <rect x="$+1" y="5" class="date-placeholder" />
-            <rect x="$+1" y="5" class="date-y-line" />
-
-            <rect x="0" y="22" class="date-dot" />
-            <rect x="$+1" y="22" class="date-x-line" />
-            <rect x="$+1" y="22" class="date-dot" />
-
-            <rect x="0" y="27" class="date-y-line" />
-            <rect x="$+1" y="27" class="date-placeholder" />
-            <rect x="$+1" y="27" class="date-y-line" />
-
-            <rect x="0" y="44" class="date-dot" />
-            <rect x="$+1" y="44" class="date-x-line" />
-            <rect x="$+1" y="44" class="date-dot" />
-        </section>
-
-        <section class="date-block">
-            <rect x="0" y="0" class="date-dot" />
-            <rect x="$+1" y="0" class="date-x-line" />
-            <rect x="$+1" y="0" class="date-dot" />
-
-            <rect x="0" y="5" class="date-y-line" />
-            <rect x="$+1" y="5" class="date-placeholder" />
-            <rect x="$+1" y="5" class="date-y-line" />
-
-            <rect x="0" y="22" class="date-dot" />
-            <rect x="$+1" y="22" class="date-x-line" />
-            <rect x="$+1" y="22" class="date-dot" />
-
-            <rect x="0" y="27" class="date-y-line" />
-            <rect x="$+1" y="27" class="date-placeholder" />
-            <rect x="$+1" y="27" class="date-y-line" />
-
-            <rect x="0" y="44" class="date-dot" />
-            <rect x="$+1" y="44" class="date-x-line" />
-            <rect x="$+1" y="44" class="date-dot" />
-        </section>
-
-        <section class="date-separator">
-            <rect x="0" y="44" class="date-dash" />
-        </section>
-
-        <section class="date-block">
-            <rect x="0" y="0" class="date-dot" />
-            <rect x="$+1" y="0" class="date-x-line" />
-            <rect x="$+1" y="0" class="date-dot" />
-
-            <rect x="0" y="5" class="date-y-line" />
-            <rect x="$+1" y="5" class="date-placeholder" />
-            <rect x="$+1" y="5" class="date-y-line" />
-
-            <rect x="0" y="22" class="date-dot" />
-            <rect x="$+1" y="22" class="date-x-line" />
-            <rect x="$+1" y="22" class="date-dot" />
-
-            <rect x="0" y="27" class="date-y-line" />
-            <rect x="$+1" y="27" class="date-placeholder" />
-            <rect x="$+1" y="27" class="date-y-line" />
-
-            <rect x="0" y="44" class="date-dot" />
-            <rect x="$+1" y="44" class="date-x-line" />
-            <rect x="$+1" y="44" class="date-dot" />
-        </section>
-
-        <section class="date-block">
-            <rect x="0" y="0" class="date-dot" />
-            <rect x="$+1" y="0" class="date-x-line" />
-            <rect x="$+1" y="0" class="date-dot" />
-
-            <rect x="0" y="5" class="date-y-line" />
-            <rect x="$+1" y="5" class="date-placeholder" />
-            <rect x="$+1" y="5" class="date-y-line" />
-
-            <rect x="0" y="22" class="date-dot" />
-            <rect x="$+1" y="22" class="date-x-line" />
-            <rect x="$+1" y="22" class="date-dot" />
-
-            <rect x="0" y="27" class="date-y-line" />
-            <rect x="$+1" y="27" class="date-placeholder" />
-            <rect x="$+1" y="27" class="date-y-line" />
-
-            <rect x="0" y="44" class="date-dot" />
-            <rect x="$+1" y="44" class="date-x-line" />
-            <rect x="$+1" y="44" class="date-dot" />
-        </section>
+    <!-- Date -->
+    <section class="header">
+        <use id="month1-display" class="date-item" href="#clock-2-number" />
+        <use id="month0-display" class="date-item" href="#clock-2-number" />
+        <use id="date-sep-display" class="date-item" href="#clock-2-dash" />
+        <use id="day1-display" class="date-item" href="#clock-2-number" />
+        <use id="day0-display" class="date-item" href="#clock-2-number" />
     </section>
 
     <!-- Time -->
     <section class="center">
-        <use id="h1-display" class="time-item" href="#large-number" />
-        <use id="h0-display" class="time-item" href="#large-number" />
-        <use id="hm-display" class="time-item" href="#large-separator" />
-        <use id="m1-display" class="time-item" href="#large-number" />
-        <use id="m0-display" class="time-item" href="#large-number" />
+        <use id="hour1-display" class="time-item" href="#clock-1-number" />
+        <use id="hour0-display" class="time-item" href="#clock-1-number" />
+        <use id="time-sep-display" class="time-item" href="#clock-1-colon" />
+        <use id="minute1-display" class="time-item" href="#clock-1-number" />
+        <use id="minute0-display" class="time-item" href="#clock-1-number" />
     </section>
 
     <section class="footer">

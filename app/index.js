@@ -11,11 +11,22 @@ let stepCounter = document.getElementById("step-counter");
 let stepProgress = document.getElementById("step-progress");
 let heartCounter = document.getElementById("heart-counter");
 let heartProgress = document.getElementById("heart-progress");
-let hour1Display = document.getElementById("h1-display");
-let hour0Display = document.getElementById("h0-display");
-let timeSepDisplay = document.getElementById("hm-display");
-let minute1Display = document.getElementById("m1-display");
-let minute0Display = document.getElementById("m0-display");
+
+// time
+let hour1Display = document.getElementById("hour1-display");
+let hour0Display = document.getElementById("hour0-display");
+let timeSepDisplay = document.getElementById("time-sep-display");
+let minute1Display = document.getElementById("minute1-display");
+let minute0Display = document.getElementById("minute0-display");
+
+// date
+let month1Display = document.getElementById("month1-display");
+let month0Display = document.getElementById("month0-display");
+let dateSepDisplay = document.getElementById("date-sep-display");
+let day1Display = document.getElementById("day1-display");
+let day0Display = document.getElementById("day0-display");
+
+// sensors
 let stepSensor = document.getElementById("step-sensor");
 let floorSensor = document.getElementById("floor-sensor");
 let calorieSensor = document.getElementById("calorie-sensor");
@@ -27,6 +38,10 @@ clockModule.initialize("minutes", function (data) {
     display.render(data.hour, [hour1Display, hour0Display])
     display.render(8, [timeSepDisplay])
     display.render(data.minute, [minute1Display, minute0Display])
+
+    display.render(data.month, [month1Display, month0Display])
+    display.render(8, [dateSepDisplay])
+    display.render(data.day, [day1Display, day0Display])
 });
 
 /* ------- ACTIVITY --------- */

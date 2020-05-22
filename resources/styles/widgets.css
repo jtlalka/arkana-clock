@@ -10,38 +10,110 @@
     fill: 'inherit';
 }
 
-/****[ large-number ]**************************************************************************************************/
-#large-number {
+/****[ clock-1-number ]************************************************************************************************/
+#clock-1-number {
     width: 32;
     height: 100%;
 }
 
-#large-number .digit-dot {
+#clock-1-number .digit-dot {
     width: 5;
     height: 5;
     fill: 'inherit';
 }
 
-#large-number .digit-x-line {
+#clock-1-number .digit-x-line {
     width: 20;
     height: 5;
     fill: 'inherit';
 }
 
-#large-number .digit-y-line {
+#clock-1-number .digit-y-line {
     width: 5;
     height: 20;
     fill: 'inherit';
 }
 
-/****[ large-separator ]***********************************************************************************************/
-#large-separator {
+/****[ clock-1-colon ]*************************************************************************************************/
+#clock-1-colon {
     width: 11;
     height: 100%;
 }
 
-#large-separator .digit-dot {
+#clock-1-colon .digit-dot {
     width: 5;
     height: 5;
+    fill: 'inherit';
+}
+
+/****[ clock-2-number ]************************************************************************************************/
+#clock-2-number {
+    width: 26;
+    height: 100%;
+}
+
+#clock-2-number .digit-dot {
+    width: 4;
+    height: 4;
+    fill: 'inherit';
+}
+
+#clock-2-number .digit-x-line {
+    width: 16;
+    height: 4;
+    fill: 'inherit';
+}
+
+#clock-2-number .digit-y-line {
+    width: 4;
+    height: 16;
+    fill: 'inherit';
+}
+
+/****[ clock-2-dash ]*************************************************************************************************/
+#clock-2-dash {
+    width: 16;
+    height: 100%;
+}
+
+#clock-2-dash .digit-x-line {
+    width: 12;
+    height: 4;
+    fill: 'inherit';
+}
+
+/****[ clock-3-number ]************************************************************************************************/
+#clock-3-number {
+    width: 14;
+    height: 100%;
+}
+
+#clock-3-number .digit-dot {
+    width: 2;
+    height: 2;
+    fill: 'inherit';
+}
+
+#clock-3-number .digit-x-line {
+    width: 8;
+    height: 2;
+    fill: 'inherit';
+}
+
+#clock-3-number .digit-y-line {
+    width: 2;
+    height: 8;
+    fill: 'inherit';
+}
+
+/****[ clock-3-dash ]*************************************************************************************************/
+#clock-3-dash {
+    width: 8;
+    height: 100%;
+}
+
+#clock-3-dash .digit-x-line {
+    width: 6;
+    height: 2;
     fill: 'inherit';
 }
