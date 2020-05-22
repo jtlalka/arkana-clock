@@ -106,14 +106,16 @@
     fill: 'inherit';
 }
 
-/****[ clock-3-dash ]*************************************************************************************************/
-#clock-3-dash {
-    width: 8;
-    height: 100%;
+/****[ sensor ]********************************************************************************************************/
+#sensor {
+    width: 60;
+    height: 60;
 }
 
-#clock-3-dash .digit-x-line {
-    width: 6;
-    height: 2;
+#sensor arc {
+    width: 60;
+    height: 60;
+    arc-width: 20;
+    sweep-angle: 25;
     fill: 'inherit';
 }

@@ -55,6 +55,20 @@
     fill: 'fb-extra-dark-gray';
 }
 
+/****[ time ]*****************************************************************/
+.time-item {
+    x: $+5;
+    y: 0;
+    fill: 'fb-extra-dark-gray';
+}
+
+/****[ date ]*****************************************************************/
+.date-item {
+    x: $+4;
+    y: 20;
+    fill: 'fb-extra-dark-gray';
+}
+
 /****[ rings ]****************************************************************/
 .ring-sensor {
     x: $+10;
@@ -75,26 +89,8 @@
     fill: fb-green;
 }
 
-.ring-sensor arc {
+.ring-sensor .ring-item {
     y: 10;
-    width: 60;
-    height: 60;
-    arc-width: 20;
-    sweep-angle:25;
-    fill: 'fb-extra-dark-gray';
-}
-
-/****[ time ]*****************************************************************/
-.time-item {
-    x: $+5;
-    y: 0;
-    fill: 'fb-extra-dark-gray';
-}
-
-/****[ date ]*****************************************************************/
-.date-item {
-    x: $+4;
-    y: 20;
     fill: 'fb-extra-dark-gray';
 }
 

@@ -56,72 +56,24 @@
 
     <section class="footer">
 
-        <section class="ring-sensor" id="step-sensor">
+        <section class="ring-sensor">
             <text>STEP</text>
-
-            <arc start-angle="0" />
-            <arc start-angle="30" />
-            <arc start-angle="60" />
-            <arc start-angle="90" />
-            <arc start-angle="120" />
-            <arc start-angle="150" />
-            <arc start-angle="180" />
-            <arc start-angle="210" />
-            <arc start-angle="240" />
-            <arc start-angle="270" />
-            <arc start-angle="300" />
-            <arc start-angle="330" />
+            <use id="step-sensor" class="ring-item" href="#sensor" />
         </section>
 
-        <section class="ring-sensor" id="floor-sensor">
+        <section class="ring-sensor">
             <text>FLRS</text>
-
-            <arc start-angle="0" />
-            <arc start-angle="30" />
-            <arc start-angle="60" />
-            <arc start-angle="90" />
-            <arc start-angle="120" />
-            <arc start-angle="150" />
-            <arc start-angle="180" />
-            <arc start-angle="210" />
-            <arc start-angle="240" />
-            <arc start-angle="270" />
-            <arc start-angle="300" />
-            <arc start-angle="330" />
+            <use id="floor-sensor" class="ring-item" href="#sensor" />
         </section>
 
-        <section class="ring-sensor" id="calorie-sensor">
+        <section class="ring-sensor">
             <text>CALS</text>
-
-            <arc start-angle="0" />
-            <arc start-angle="30" />
-            <arc start-angle="60" />
-            <arc start-angle="90" />
-            <arc start-angle="120" />
-            <arc start-angle="150" />
-            <arc start-angle="180" />
-            <arc start-angle="210" />
-            <arc start-angle="240" />
-            <arc start-angle="270" />
-            <arc start-angle="300" />
-            <arc start-angle="330" />
+            <use id="calorie-sensor" class="ring-item" href="#sensor" />
         </section>
 
-        <section class="ring-sensor" id="activity-sensor">
+        <section class="ring-sensor">
             <text>ACTX</text>
-
-            <arc start-angle="0" />
-            <arc start-angle="30" />
-            <arc start-angle="60" />
-            <arc start-angle="90" />
-            <arc start-angle="120" />
-            <arc start-angle="150" />
-            <arc start-angle="180" />
-            <arc start-angle="210" />
-            <arc start-angle="240" />
-            <arc start-angle="270" />
-            <arc start-angle="300" />
-            <arc start-angle="330" />
+            <use id="activity-sensor" class="ring-item" href="#sensor" />
         </section>
     </section>
 

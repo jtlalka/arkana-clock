@@ -96,9 +96,20 @@
             <rect x="$+1" y="24" class="digit-dot" />
         </symbol>
 
-        <!-- Clock 3 dash -->
-        <symbol id="clock-3-dash">
-            <rect x="2" y="12" class="digit-x-line" />
+        <!-- Sensor -->
+        <symbol id="sensor">
+            <arc start-angle="0" />
+            <arc start-angle="30" />
+            <arc start-angle="60" />
+            <arc start-angle="90" />
+            <arc start-angle="120" />
+            <arc start-angle="150" />
+            <arc start-angle="180" />
+            <arc start-angle="210" />
+            <arc start-angle="240" />
+            <arc start-angle="270" />
+            <arc start-angle="300" />
+            <arc start-angle="330" />
         </symbol>
 
     </defs>
