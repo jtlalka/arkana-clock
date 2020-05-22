@@ -39,7 +39,7 @@ clockModule.initialize("minutes", function (data) {
     display.render(8, [timeSepDisplay])
     display.render(data.minute, [minute1Display, minute0Display])
 
-    display.render(data.month, [month1Display, month0Display])
+    display.render(data.month, [month1Display, month0Display], true)
     display.render(8, [dateSepDisplay])
     display.render(data.day, [day1Display, day0Display])
 });
