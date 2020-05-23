@@ -5,9 +5,12 @@ import * as clockModule from "./platform/clock";
 import * as simpleHRM from "./platform/hrm";
 import * as simpleSettings from "./platform/settings";
 import * as battery from "./platform/battery";
+import * as counter from "./module/counter";
 import * as display from "./module/display";
 
 let background = document.getElementById("screen");
+
+// counter
 let stepCounter = document.getElementById("step-counter");
 let stepProgress = document.getElementById("step-progress");
 let heartCounter = document.getElementById("heart-counter");
@@ -48,6 +51,7 @@ clockModule.initialize("minutes", function (data) {
 /* ------- ACTIVITY --------- */
 simpleActivity.initialize("seconds", function (data) {
     stepCounter.text = data.steps.pretty;
+    counter.render(data.steps.raw, 10000, stepProgress, true);
 
     //console.log("Activity steps date: " + data.steps.pretty)
     //console.log("Activity calories date: " + data.calories.pretty)
@@ -66,6 +70,7 @@ simpleHRM.initialize(function (data) {
 /* -------- Battery ------------- */
 battery.initialize("minutes", function(data) {
     heartCounter.text = Math.floor(data.level) + '%';
+    counter.render(data.level, 100, heartProgress, true);
 });
 
 /* -------- SETTINGS -------- */
