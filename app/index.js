@@ -21,11 +21,11 @@ let minute1Display = document.getElementById("minute1-display");
 let minute0Display = document.getElementById("minute0-display");
 
 // date
-let month1Display = document.getElementById("month1-display");
-let month0Display = document.getElementById("month0-display");
-let dateSepDisplay = document.getElementById("date-sep-display");
 let day1Display = document.getElementById("day1-display");
 let day0Display = document.getElementById("day0-display");
+let dateSepDisplay = document.getElementById("date-sep-display");
+let month1Display = document.getElementById("month1-display");
+let month0Display = document.getElementById("month0-display");
 
 // sensors
 let stepSensor = document.getElementById("step-sensor");
@@ -40,9 +40,9 @@ clockModule.initialize("minutes", function (data) {
     display.render(8, [timeSepDisplay])
     display.render(data.minute, [minute1Display, minute0Display])
 
-    display.render(data.month, [month1Display, month0Display], true)
+    display.render(data.day, [day1Display, day0Display], true)
     display.render(8, [dateSepDisplay])
-    display.render(data.day, [day1Display, day0Display])
+    display.render(data.month, [month1Display, month0Display])
 });
 
 /* ------- ACTIVITY --------- */

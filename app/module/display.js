@@ -16,13 +16,13 @@ let displayMatrix = {
 
 export function render(number, displayBlocks, skipZeroPrefix = false) {
     for (let i = 0, length = displayBlocks.length; i < length; i++) {
-        let digit = getDigit(number, length - 1 - i);
         let block = displayBlocks[i];
+        let index = length - 1 - i;
 
-        if (skipZeroPrefix && isZeroPrefix(i, digit)) {
+        if (skipZeroPrefix && isZeroPrefix(number, index)) {
             renderDigit('x', block);
         } else {
-            renderDigit(digit, block);
+            renderDigit(getDigit(number, index), block);
         }
     }
 }
@@ -31,8 +31,8 @@ function getDigit(number, index) {
     return Math.floor((number / Math.pow(10, index)) % 10);
 }
 
-function isZeroPrefix(index, digit) {
-    return index === 0 && digit === 0
+function isZeroPrefix(number, index) {
+    return Math.pow(10, index) > number;
 }
 
 function renderDigit(digit, displayBlock) {

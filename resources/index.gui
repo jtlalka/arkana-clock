@@ -38,11 +38,11 @@
 
     <!-- Date -->
     <section class="header">
-        <use id="month1-display" class="date-item" href="#clock-2-number" />
-        <use id="month0-display" class="date-item" href="#clock-2-number" />
-        <use id="date-sep-display" class="date-item" href="#clock-2-dash" />
         <use id="day1-display" class="date-item" href="#clock-2-number" />
         <use id="day0-display" class="date-item" href="#clock-2-number" />
+        <use id="date-sep-display" class="date-item" href="#clock-2-dash" />
+        <use id="month1-display" class="date-item" href="#clock-2-number" />
+        <use id="month0-display" class="date-item" href="#clock-2-number" />
     </section>
 
     <!-- Time -->
