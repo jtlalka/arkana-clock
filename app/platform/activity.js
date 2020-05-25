@@ -1,89 +1,55 @@
-import { me } from "appbit";
-import { clock } from "clock";
-import { today, goals } from "user-activity";
-import { units } from "user-settings";
+import { today, primaryGoal, goals } from "user-activity";
 
-let activityCallback;
+const defaultGoals = {
+    steps: 1000,
+    floors: 10,
+    calories: 3000,
+    activeMinutes: 30,
+    distanceMeters: 8046
+}
 
-export function initialize(granularity, callback) {
-    if (me.permissions.granted("access_activity")) {
-        clock.granularity = granularity;
-        clock.addEventListener("tick", tickHandler);
-        activityCallback = callback;
-    } else {
-        console.log("Denied User Activity permission");
-        callback({
-            steps: getDeniedStats(),
-            calories: getDeniedStats(),
-            distance: getDeniedStats(),
-            elevationGain: getDeniedStats(),
-            activeMinutes: getDeniedStats()
-        });
+export function getPrimaryGoal() {
+    return primaryGoal;
+}
+
+export function getSteps() {
+    return {
+        today: today.adjusted.steps || 0,
+        goal: goals.steps || defaultGoals.steps,
     }
 }
 
-let activityData = () => {
+export function getFloors() {
     return {
-        steps: getSteps(),
-        calories: getCalories(),
-        distance: getDistance(),
-        elevationGain: getElevationGain(),
-        activeMinutes: getActiveMinutes()
-    };
-}
-
-function tickHandler(evt) {
-    activityCallback(activityData());
-}
-
-function getActiveMinutes() {
-    let val = (today.adjusted.activeMinutes || 0);
-    return {
-        raw: val,
-        pretty: (val < 60 ? "" : Math.floor(val / 60) + "h,") + ("0" + (val % 60)).slice("-2") + "m"
+        today: today.local.elevationGain !== undefined ? today.adjusted.elevationGain || 0 : 0,
+        goal: goals.elevationGain || defaultGoals.floors
     }
 }
 
-function getCalories() {
-    let val = (today.adjusted.calories || 0);
+export function getCalories() {
     return {
-        raw: val,
-        pretty: val > 999 ? Math.floor(val / 1000) + "," + ("00" + (val % 1000)).slice(-3) : val
+        today: today.adjusted.calories || 0,
+        goal: goals.calories || defaultGoals.calories
     }
 }
 
-function getDistance() {
-    let val = (today.adjusted.distance || 0) / 1000;
-    let u = "km";
-    if (units.distance === "us") {
-        val *= 0.621371;
-        u = "mi";
-    }
+export function getActiveMinutes() {
     return {
-        raw: val,
-        pretty: `${val.toFixed(2)}${u}`
+        today: today.adjusted.activeMinutes || 0,
+        goal: goals.activeMinutes || defaultGoals.activeMinutes
     }
 }
 
-function getElevationGain() {
-    let val = today.adjusted.elevationGain || 0;
+export function getDistanceMeters() {
     return {
-        raw: val,
-        pretty: `+${val}`
+        today: today.adjusted.distance || 0,
+        goal: goals.distance || defaultGoals.distanceMeters
     }
 }
 
-function getSteps() {
-    let val = (today.adjusted.steps || 0);
+export function getDeniedStats() {
     return {
-        raw: val,
-        pretty: val > 999 ? Math.floor(val / 1000) + "," + ("00" + (val % 1000)).slice(-3) : val
-    }
-}
-
-function getDeniedStats() {
-    return {
-        raw: 0,
-        pretty: "Denied"
+        today: 0,
+        goal: undefined
     }
 }

@@ -1,9 +1,16 @@
+import * as cache from "../../common/cache";
 
-export function render(value, limit, displayBlock, isInvertedScale = false) {
+export function render(key, value, limit, displayBlock, isInvertedScale = false) {
     let percentage = value / limit;
     let size = displayBlock.children.length;
     let level = Math.floor(percentage * size);
 
+    cache.runOnUpdate(key, level, function () {
+        renderProgress(key, level, displayBlock, isInvertedScale);
+    });
+}
+
+function renderProgress(key, level, displayBlock, isInvertedScale) {
     for (let i = 0, length = displayBlock.children.length; i < length; i++) {
         if (getUnifiedIndex(length, i, isInvertedScale) < level) {
             displayBlock.children[i].style.fill = 'limegreen';

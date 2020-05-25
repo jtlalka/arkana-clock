@@ -2,9 +2,21 @@ import { clock } from "clock";
 import { preferences } from "user-settings";
 
 /**
+ * Granularity at which initialization callback is triggered.
+ *
+ * @type {{seconds: string, hours: string, minutes: string, off: string}}
+ */
+export const granularity = {
+    seconds: "seconds",
+    minutes: "minutes",
+    hours: "hours",
+    off: "off"
+}
+
+/**
  * Clock listener.
  *
- * @param granularity Granularity at which clockCallback should be emitted, values: hours, minutes, seconds, off.
+ * @param granularity Granularity at which clockCallback should be emitted.
  * @param clockCallback Callback with data time information.
  */
 export function initialize(granularity, clockCallback) {

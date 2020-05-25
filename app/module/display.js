@@ -1,3 +1,4 @@
+import * as cache from "../../common/cache";
 import * as utils from "../../common/utils";
 
 export const FULL = '8'
@@ -17,7 +18,13 @@ let displayMatrix = {
     'x': []
 }
 
-export function render(number, displayBlocks, skipZeroPrefix = false) {
+export function render(key, number, displayBlocks, skipZeroPrefix = false) {
+    cache.runOnUpdate(key, number, function () {
+        renderNumber(number, displayBlocks, skipZeroPrefix);
+    });
+}
+
+function renderNumber(number, displayBlocks, skipZeroPrefix) {
     for (let i = 0, length = displayBlocks.length; i < length; i++) {
         let block = displayBlocks[i];
         let index = length - 1 - i;

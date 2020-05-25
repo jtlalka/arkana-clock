@@ -1,3 +1,4 @@
+// noinspection NpmUsedModulesInstalled
 import document from "document";
 
 import * as simpleActivity from "./platform/activity";
@@ -7,6 +8,23 @@ import * as simpleSettings from "./platform/settings";
 import * as battery from "./platform/battery";
 import * as counter from "./module/counter";
 import * as display from "./module/display";
+import * as sensors from "./module/sensors";
+
+// data types
+const Types = {
+    HH: "cache.hours",
+    TS: "cache.time.separator",
+    MI: "cache.minutes",
+    DD: "cache.days",
+    DS: "cache.date.separator",
+    MO: "cache.months",
+    GO: "cache.main.goal",
+    HR: "cache.heart.rate",
+    ST: "cache.steps",
+    FL: "cache.floors",
+    CA: "cache.calories",
+    AM: "cache.active.minutes"
+}
 
 let background = document.getElementById("screen");
 
@@ -38,40 +56,37 @@ let activitySensor = document.getElementById("activity-sensor");
 
 
 /* --------- CLOCK ---------- */
-clockModule.initialize("minutes", function (data) {
-    display.render(data.hour, [hour1Display, hour0Display])
-    display.render(display.FULL, [timeSepDisplay])
-    display.render(data.minute, [minute1Display, minute0Display])
+clockModule.initialize(clockModule.granularity.minutes, function (data) {
+    display.render(Types.HH, data.hour, [hour1Display, hour0Display]);
+    display.render(Types.TS, display.FULL, [timeSepDisplay]);
+    display.render(Types.MI, data.minute, [minute1Display, minute0Display]);
 
-    display.render(data.day, [day1Display, day0Display], true)
-    display.render(display.FULL, [dateSepDisplay])
-    display.render(data.month, [month1Display, month0Display])
+    display.render(Types.DD, data.day, [day1Display, day0Display], true);
+    display.render(Types.DS, display.FULL, [dateSepDisplay]);
+    display.render(Types.MO, data.month, [month1Display, month0Display]);
+
+    sensors.fetch(function (data) {
+        counter.render(Types.ST, data.steps.today, data.steps.goal, stepSensor);
+        counter.render(Types.FL, data.floors.today, data.floors.goal, floorSensor);
+        counter.render(Types.CA, data.calories.today, data.calories.goal, calorieSensor);
+        counter.render(Types.AM, data.activeMinutes.today, data.activeMinutes.goal, activitySensor);
+    });
 });
 
-/* ------- ACTIVITY --------- */
-simpleActivity.initialize("seconds", function (data) {
-    stepCounter.text = data.steps.pretty;
-    counter.render(data.steps.raw, 10000, stepProgress, true);
-
-    //console.log("Activity steps date: " + data.steps.pretty)
-    //console.log("Activity calories date: " + data.calories.pretty)
-    //console.log("Activity distance date: " + data.distance.pretty)
-    //console.log("Activity elevationGain date: " + data.elevationGain.pretty)
-    //console.log("Activity activeMinutes date: " + data.activeMinutes.pretty)
-});
 
 /* -------- HRM ------------- */
 simpleHRM.initialize(function (data) {
-    //heartCounter.text = data.bpm;
-
-    //console.log("HRM date: " + data.bpm + " " + data.zone)
+    heartCounter.text = data.bpm;
+    counter.render(Types.HR, data.bpm, 220, heartProgress, true);
 });
+
 
 /* -------- Battery ------------- */
-battery.initialize("minutes", function(data) {
-    heartCounter.text = Math.floor(data.level) + '%';
-    counter.render(data.level, 100, heartProgress, true);
+battery.initialize(clockModule.granularity.seconds, function (data) {
+    stepCounter.text = Math.floor(data.level) + '%';
+    counter.render(Types.GO, data.level, 100, stepProgress, true);
 });
+
 
 /* -------- SETTINGS -------- */
 simpleSettings.initialize(function (data) {
