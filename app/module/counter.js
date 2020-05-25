@@ -4,8 +4,6 @@ export function render(value, limit, displayBlock, isInvertedScale = false) {
     let size = displayBlock.children.length;
     let level = Math.floor(percentage * size);
 
-    //console.log("P: " + percentage + " L " + size + " lxl:" + level);
-
     for (let i = 0, length = displayBlock.children.length; i < length; i++) {
         if (getUnifiedIndex(length, i, isInvertedScale) < level) {
             displayBlock.children[i].style.fill = 'limegreen';

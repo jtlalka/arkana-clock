@@ -40,11 +40,11 @@ let activitySensor = document.getElementById("activity-sensor");
 /* --------- CLOCK ---------- */
 clockModule.initialize("minutes", function (data) {
     display.render(data.hour, [hour1Display, hour0Display])
-    display.render(8, [timeSepDisplay])
+    display.render(display.FULL, [timeSepDisplay])
     display.render(data.minute, [minute1Display, minute0Display])
 
     display.render(data.day, [day1Display, day0Display], true)
-    display.render(8, [dateSepDisplay])
+    display.render(display.FULL, [dateSepDisplay])
     display.render(data.month, [month1Display, month0Display])
 });
 

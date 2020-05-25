@@ -22,6 +22,22 @@
             <rect id="progress-step-1" width="5" />
         </symbol>
 
+        <!-- Sensor -->
+        <symbol id="sensor">
+            <arc start-angle="0" />
+            <arc start-angle="30" />
+            <arc start-angle="60" />
+            <arc start-angle="90" />
+            <arc start-angle="120" />
+            <arc start-angle="150" />
+            <arc start-angle="180" />
+            <arc start-angle="210" />
+            <arc start-angle="240" />
+            <arc start-angle="270" />
+            <arc start-angle="300" />
+            <arc start-angle="330" />
+        </symbol>
+
         <!-- Clock 1 number -->
         <symbol id="clock-1-number">
             <rect x="0" y="0" class="digit-dot" />
@@ -94,22 +110,6 @@
             <rect x="0" y="24" class="digit-dot" />
             <rect x="$+1" y="24" class="digit-x-line" />
             <rect x="$+1" y="24" class="digit-dot" />
-        </symbol>
-
-        <!-- Sensor -->
-        <symbol id="sensor">
-            <arc start-angle="0" />
-            <arc start-angle="30" />
-            <arc start-angle="60" />
-            <arc start-angle="90" />
-            <arc start-angle="120" />
-            <arc start-angle="150" />
-            <arc start-angle="180" />
-            <arc start-angle="210" />
-            <arc start-angle="240" />
-            <arc start-angle="270" />
-            <arc start-angle="300" />
-            <arc start-angle="330" />
         </symbol>
 
     </defs>

@@ -1,5 +1,8 @@
 import * as utils from "../../common/utils";
 
+export const FULL = '8'
+export const NONE = 'x'
+
 let displayMatrix = {
     '0': [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12],
     '1': [2, 4, 7, 9, 12],
@@ -20,19 +23,19 @@ export function render(number, displayBlocks, skipZeroPrefix = false) {
         let index = length - 1 - i;
 
         if (skipZeroPrefix && isZeroPrefix(number, index)) {
-            renderDigit('x', block);
+            renderDigit(NONE, block);
         } else {
             renderDigit(getDigit(number, index), block);
         }
     }
 }
 
-function getDigit(number, index) {
-    return Math.floor((number / Math.pow(10, index)) % 10);
-}
-
 function isZeroPrefix(number, index) {
     return Math.pow(10, index) > number;
+}
+
+function getDigit(number, index) {
+    return Math.floor((number / Math.pow(10, index)) % 10);
 }
 
 function renderDigit(digit, displayBlock) {

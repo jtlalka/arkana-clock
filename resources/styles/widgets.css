@@ -10,6 +10,20 @@
     fill: 'inherit';
 }
 
+/****[ sensor ]********************************************************************************************************/
+#sensor {
+    width: 60;
+    height: 60;
+}
+
+#sensor arc {
+    width: 60;
+    height: 60;
+    arc-width: 20;
+    sweep-angle: 25;
+    fill: 'inherit';
+}
+
 /****[ clock-1-number ]************************************************************************************************/
 #clock-1-number {
     width: 32;
@@ -103,19 +117,5 @@
 #clock-3-number .digit-y-line {
     width: 2;
     height: 8;
-    fill: 'inherit';
-}
-
-/****[ sensor ]********************************************************************************************************/
-#sensor {
-    width: 60;
-    height: 60;
-}
-
-#sensor arc {
-    width: 60;
-    height: 60;
-    arc-width: 20;
-    sweep-angle: 25;
     fill: 'inherit';
 }
