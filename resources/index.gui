@@ -57,6 +57,11 @@
     <section class="footer">
 
         <section class="ring-sensor">
+            <text>ACTX</text>
+            <use id="activity-sensor" class="ring-item" href="#sensor" />
+        </section>
+
+        <section class="ring-sensor">
             <text>STEP</text>
             <use id="step-sensor" class="ring-item" href="#sensor" />
         </section>
@@ -71,10 +76,6 @@
             <use id="calorie-sensor" class="ring-item" href="#sensor" />
         </section>
 
-        <section class="ring-sensor">
-            <text>ACTX</text>
-            <use id="activity-sensor" class="ring-item" href="#sensor" />
-        </section>
     </section>
 
 </svg>

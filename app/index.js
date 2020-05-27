@@ -20,10 +20,10 @@ const Types = {
     MO: "cache.months",
     GO: "cache.main.goal",
     HR: "cache.heart.rate",
+    AM: "cache.active.minutes",
     ST: "cache.steps",
     FL: "cache.floors",
-    CA: "cache.calories",
-    AM: "cache.active.minutes"
+    CA: "cache.calories"
 }
 
 let background = document.getElementById("screen");
@@ -49,10 +49,10 @@ let month1Display = document.getElementById("month1-display");
 let month0Display = document.getElementById("month0-display");
 
 // sensors
+let activitySensor = document.getElementById("activity-sensor");
 let stepSensor = document.getElementById("step-sensor");
 let floorSensor = document.getElementById("floor-sensor");
 let calorieSensor = document.getElementById("calorie-sensor");
-let activitySensor = document.getElementById("activity-sensor");
 
 
 /* --------- CLOCK ---------- */
@@ -66,10 +66,10 @@ clockModule.initialize(clockModule.granularity.minutes, function (data) {
     display.render(Types.MO, data.month, [month1Display, month0Display]);
 
     sensors.fetch(function (data) {
+        counter.render(Types.AM, data.activeMinutes.today, data.activeMinutes.goal, activitySensor);
         counter.render(Types.ST, data.steps.today, data.steps.goal, stepSensor);
         counter.render(Types.FL, data.floors.today, data.floors.goal, floorSensor);
         counter.render(Types.CA, data.calories.today, data.calories.goal, calorieSensor);
-        counter.render(Types.AM, data.activeMinutes.today, data.activeMinutes.goal, activitySensor);
     });
 });
 
