@@ -4,6 +4,7 @@ import * as permission from "../platform/permission";
 export function fetch(callback) {
     if (permission.check(permission.type.activity)) {
         callback({
+            primaryGoal: activity.getPrimaryGoal(),
             steps: activity.getSteps(),
             floors: activity.getFloors(),
             calories: activity.getCalories(),
@@ -12,6 +13,7 @@ export function fetch(callback) {
         });
     } else {
         callback({
+            primaryGoal: '',
             steps: activity.getDeniedStats(),
             floors: activity.getDeniedStats(),
             calories: activity.getDeniedStats(),

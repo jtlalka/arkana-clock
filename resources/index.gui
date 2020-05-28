@@ -1,8 +1,18 @@
 <svg id="screen">
 
-    <!-- Progress counters -->
-    <text id="step-counter" class="progress-counter progress-counter-start" />
-    <text id="heart-counter" class="progress-counter progress-counter-end" />
+    <!-- Steps counter -->
+    <section class="top-start">
+        <use id="step2-display" class="counter-item" href="#clock-3-number" />
+        <use id="step1-display" class="counter-item" href="#clock-3-number" />
+        <use id="step0-display" class="counter-item" href="#clock-3-number" />
+    </section>
+
+    <!-- Heart counter -->
+    <section class="top-stop">
+        <use id="heart2-display" class="counter-item" href="#clock-3-number" />
+        <use id="heart1-display" class="counter-item" href="#clock-3-number" />
+        <use id="heart0-display" class="counter-item" href="#clock-3-number" />
+    </section>
 
     <!-- Steps progress -->
     <use id="step-progress" href="#progress" class="progress-start">

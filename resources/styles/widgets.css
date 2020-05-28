@@ -27,7 +27,7 @@
 /****[ clock-1-number ]************************************************************************************************/
 #clock-1-number {
     width: 32;
-    height: 100%;
+    height: 60;
 }
 
 #clock-1-number .digit-dot {
@@ -51,7 +51,7 @@
 /****[ clock-1-colon ]*************************************************************************************************/
 #clock-1-colon {
     width: 11;
-    height: 100%;
+    height: 60;
 }
 
 #clock-1-colon .digit-dot {
@@ -62,25 +62,25 @@
 
 /****[ clock-2-number ]************************************************************************************************/
 #clock-2-number {
-    width: 26;
-    height: 100%;
+    width: 20;
+    height: 37;
 }
 
 #clock-2-number .digit-dot {
-    width: 4;
-    height: 4;
+    width: 3;
+    height: 3;
     fill: 'inherit';
 }
 
 #clock-2-number .digit-x-line {
-    width: 16;
-    height: 4;
+    width: 12;
+    height: 3;
     fill: 'inherit';
 }
 
 #clock-2-number .digit-y-line {
-    width: 4;
-    height: 16;
+    width: 3;
+    height: 12;
     fill: 'inherit';
 }
 
@@ -92,14 +92,14 @@
 
 #clock-2-dash .digit-x-line {
     width: 12;
-    height: 4;
+    height: 3;
     fill: 'inherit';
 }
 
 /****[ clock-3-number ]************************************************************************************************/
 #clock-3-number {
     width: 14;
-    height: 100%;
+    height: 26;
 }
 
 #clock-3-number .digit-dot {

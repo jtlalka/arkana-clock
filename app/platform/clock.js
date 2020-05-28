@@ -1,5 +1,5 @@
-import { clock } from "clock";
-import { preferences } from "user-settings";
+import { clock } from 'clock';
+import { preferences } from 'user-settings';
 
 /**
  * Granularity at which initialization callback is triggered.
@@ -7,10 +7,10 @@ import { preferences } from "user-settings";
  * @type {{seconds: string, hours: string, minutes: string, off: string}}
  */
 export const granularity = {
-    seconds: "seconds",
-    minutes: "minutes",
-    hours: "hours",
-    off: "off"
+    seconds: 'seconds',
+    minutes: 'minutes',
+    hours: 'hours',
+    off: 'off'
 }
 
 /**
@@ -21,7 +21,7 @@ export const granularity = {
  */
 export function initialize(granularity, clockCallback) {
     clock.granularity = granularity;
-    clock.addEventListener("tick", function (evt) {
+    clock.addEventListener('tick', function (evt) {
         clockCallback({
             day: evt.date.getDate(),
             month: evt.date.getMonth() + 1,
@@ -34,7 +34,7 @@ export function initialize(granularity, clockCallback) {
 }
 
 function getUserHoursFormat(hour) {
-    if (preferences['clockDisplay'] === "12h") {
+    if (preferences['clockDisplay'] === '12h') {
         return hour % 12 || 12;
     } else {
         return hour;

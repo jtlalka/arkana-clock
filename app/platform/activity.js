@@ -1,4 +1,4 @@
-import { today, primaryGoal, goals } from "user-activity";
+import { today, primaryGoal, goals } from 'user-activity';
 
 const defaultGoals = {
     steps: 1000,

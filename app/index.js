@@ -1,7 +1,6 @@
 // noinspection NpmUsedModulesInstalled
 import document from "document";
 
-import * as simpleActivity from "./platform/activity";
 import * as clockModule from "./platform/clock";
 import * as simpleHRM from "./platform/hrm";
 import * as simpleSettings from "./platform/settings";
@@ -19,7 +18,9 @@ const Types = {
     DS: "cache.date.separator",
     MO: "cache.months",
     GO: "cache.main.goal",
+    GV: "cache.main.goal.value",
     HR: "cache.heart.rate",
+    HV: "cache.heart.rate.value",
     AM: "cache.active.minutes",
     ST: "cache.steps",
     FL: "cache.floors",
@@ -29,9 +30,15 @@ const Types = {
 let background = document.getElementById("screen");
 
 // counter
-let stepCounter = document.getElementById("step-counter");
+let step2Display = document.getElementById("step2-display");
+let step1Display = document.getElementById("step1-display");
+let step0Display = document.getElementById("step0-display");
+let heart2Display = document.getElementById("heart2-display");
+let heart1Display = document.getElementById("heart1-display");
+let heart0Display = document.getElementById("heart0-display");
+
+// progress
 let stepProgress = document.getElementById("step-progress");
-let heartCounter = document.getElementById("heart-counter");
 let heartProgress = document.getElementById("heart-progress");
 
 // time
@@ -76,14 +83,14 @@ clockModule.initialize(clockModule.granularity.minutes, function (data) {
 
 /* -------- HRM ------------- */
 simpleHRM.initialize(function (data) {
-    heartCounter.text = data.bpm;
+    display.render(Types.HV, data.bpm, [heart2Display, heart1Display, heart0Display], true);
     counter.render(Types.HR, data.bpm, 220, heartProgress, true);
 });
 
 
 /* -------- Battery ------------- */
 battery.initialize(clockModule.granularity.seconds, function (data) {
-    stepCounter.text = Math.floor(data.level) + '%';
+    display.render(Types.GV, data.level, [step2Display, step1Display, step0Display], true);
     counter.render(Types.GO, data.level, 100, stepProgress, true);
 });
 
@@ -97,8 +104,6 @@ simpleSettings.initialize(function (data) {
             background.style.fill = data['backgroundColor'];
         }
         if (data['foregroundColor']) {
-            stepCounter.style.fill = data['foregroundColor'];
-            heartCounter.style.fill = data['foregroundColor'];
         }
     }
 });
