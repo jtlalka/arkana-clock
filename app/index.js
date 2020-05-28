@@ -5,7 +5,7 @@ import * as clockModule from "./platform/clock";
 import * as simpleHRM from "./platform/hrm";
 import * as simpleSettings from "./platform/settings";
 import * as battery from "./platform/battery";
-import * as counter from "./module/counter";
+import * as progress from "./module/progress";
 import * as display from "./module/display";
 import * as sensors from "./module/sensors";
 
@@ -68,30 +68,30 @@ clockModule.initialize(clockModule.granularity.minutes, function (data) {
     display.render(Types.TS, display.FULL, [timeSepDisplay]);
     display.render(Types.MI, data.minute, [minute1Display, minute0Display]);
 
-    display.render(Types.DD, data.day, [day1Display, day0Display], true);
+    display.render(Types.DD, data.day, [day1Display, day0Display], display.type.alignRight);
     display.render(Types.DS, display.FULL, [dateSepDisplay]);
     display.render(Types.MO, data.month, [month1Display, month0Display]);
 
     sensors.fetch(function (data) {
-        counter.render(Types.AM, data.activeMinutes.today, data.activeMinutes.goal, activitySensor);
-        counter.render(Types.ST, data.steps.today, data.steps.goal, stepSensor);
-        counter.render(Types.FL, data.floors.today, data.floors.goal, floorSensor);
-        counter.render(Types.CA, data.calories.today, data.calories.goal, calorieSensor);
+        progress.render(Types.AM, data.activeMinutes.today, data.activeMinutes.goal, activitySensor);
+        progress.render(Types.ST, data.steps.today, data.steps.goal, stepSensor);
+        progress.render(Types.FL, data.floors.today, data.floors.goal, floorSensor);
+        progress.render(Types.CA, data.calories.today, data.calories.goal, calorieSensor);
     });
 });
 
 
 /* -------- HRM ------------- */
 simpleHRM.initialize(function (data) {
-    display.render(Types.HV, data.bpm, [heart2Display, heart1Display, heart0Display], true);
-    counter.render(Types.HR, data.bpm, 220, heartProgress, true);
+    display.render(Types.HV, data.bpm, [heart2Display, heart1Display, heart0Display], display.type.alignRight);
+    progress.render(Types.HR, data.bpm, 220, heartProgress, true);
 });
 
 
 /* -------- Battery ------------- */
 battery.initialize(clockModule.granularity.seconds, function (data) {
-    display.render(Types.GV, data.level, [step2Display, step1Display, step0Display], true);
-    counter.render(Types.GO, data.level, 100, stepProgress, true);
+    display.render(Types.GV, data.level, [step2Display, step1Display, step0Display], display.type.alignLeft);
+    progress.render(Types.GO, data.level, 100, stepProgress, true);
 });
 
 

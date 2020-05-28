@@ -1,55 +1,80 @@
 import * as cache from "../../common/cache";
-import * as utils from "../../common/utils";
 
 export const FULL = '8'
 export const NONE = 'x'
 
-let displayMatrix = {
-    '0': [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12],
-    '1': [2, 4, 7, 9, 12],
-    '2': [0, 1, 2, 4, 5, 6, 7, 8, 10, 11, 12],
-    '3': [0, 1, 2, 4, 5, 6, 7, 9, 10, 11, 12],
-    '4': [0, 2, 3, 4, 5, 6, 7, 9, 12],
-    '5': [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 12],
-    '6': [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12],
-    '7': [0, 1, 2, 4, 7, 9, 12],
-    '8': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-    '9': [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12],
-    'x': []
+export const type = {
+    digital: 0,
+    alignRight: 1,
+    alignLeft: 2
 }
 
-export function render(key, number, displayBlocks, skipZeroPrefix = false) {
-    cache.runOnUpdate(key, number, function () {
-        renderNumber(number, displayBlocks, skipZeroPrefix);
+let displayMatrix = {
+    //    0  1  2  3  4  5  6  7  8  9  10 11 12
+    '0': [1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
+    '1': [0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1],
+    '2': [1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+    '3': [1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+    '4': [1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1],
+    '5': [1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1],
+    '6': [1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+    '7': [1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1],
+    '8': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    '9': [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+    'x': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+export function render(key, value, displayBlocks, format = type.digital) {
+    cache.runOnUpdate(key, value, function () {
+        renderDisplay(value, displayBlocks, format);
     });
 }
 
-function renderNumber(number, displayBlocks, skipZeroPrefix) {
-    for (let i = 0, length = displayBlocks.length; i < length; i++) {
-        let block = displayBlocks[i];
-        let index = length - 1 - i;
+function renderDisplay(number, displayBlocks, format) {
+    let digits = getDigitNumber(number, displayBlocks.length, format);
 
-        if (skipZeroPrefix && isZeroPrefix(number, index)) {
-            renderDigit(NONE, block);
-        } else {
-            renderDigit(getDigit(number, index), block);
-        }
+    for (let i = 0, length = displayBlocks.length; i < length; i++) {
+        renderDigit(digits[i], displayBlocks[i]);
     }
 }
 
-function isZeroPrefix(number, index) {
-    return Math.pow(10, index) > number;
-}
+function getDigitNumber(number, displaySize, format) {
+    let prefix = "";
+    let postfix = "";
 
-function getDigit(number, index) {
-    return Math.floor((number / Math.pow(10, index)) % 10);
+    for (let index = displaySize; index > 0; index--) {
+        let maxValue = Math.pow(10, index) - 1;
+        let minValue = Math.pow(10, index - 1) - 1;
+
+        if (number > maxValue) {
+            if (index === displaySize) {
+                return maxValue.toString();
+            }
+        } else if (number < minValue) {
+            switch(format) {
+                case type.digital: {
+                    prefix += '0';
+                    break;
+                }
+                case type.alignLeft: {
+                    postfix += NONE;
+                    break;
+                }
+                case type.alignRight: {
+                    prefix += NONE;
+                    break;
+                }
+            }
+        }
+    }
+    return prefix + number + postfix;
 }
 
 function renderDigit(digit, displayBlock) {
-    let matrix = displayMatrix[digit];
+    let matrix = displayMatrix[digit] || displayMatrix[NONE];
 
     for (let i = 0, length = displayBlock.children.length; i < length; i++) {
-        if (utils.isInArray(i, matrix)) {
+        if (matrix[i]) {
             displayBlock.children[i].style.fill = 'limegreen';
         } else {
             displayBlock.children[i].style.fill = 'fb-extra-dark-gray';
