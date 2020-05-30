@@ -1,5 +1,4 @@
 import { clock } from 'clock';
-import { preferences } from 'user-settings';
 
 /**
  * Granularity at which initialization callback is triggered.
@@ -26,17 +25,9 @@ export function initialize(granularity, clockCallback) {
             day: evt.date.getDate(),
             month: evt.date.getMonth() + 1,
             year: evt.date.getFullYear(),
-            hour: getUserHoursFormat(evt.date.getHours()),
+            hour: evt.date.getHours(),
             minute: evt.date.getMinutes(),
             second: evt.date.getSeconds()
         });
     });
-}
-
-function getUserHoursFormat(hour) {
-    if (preferences['clockDisplay'] === '12h') {
-        return hour % 12 || 12;
-    } else {
-        return hour;
-    }
 }

@@ -1,15 +1,12 @@
 import { battery, charger } from "power";
-import { clock } from "clock";
 
 /**
- * Battery sensor.
+ * Battery data.
  */
-export function initialize(granularity, clockCallback) {
-    clock.granularity = granularity;
-    clock.addEventListener("tick", function (evt) {
-        clockCallback({
-            level: battery.chargeLevel,
-            connected: charger.connected
-        });
+export function fetch(callback) {
+    callback({
+        connected: charger['connected'],
+        level: battery['chargeLevel'],
+        limit: 100
     });
 }

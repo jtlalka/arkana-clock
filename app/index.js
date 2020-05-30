@@ -82,6 +82,11 @@ clockModule.initialize(clockModule.granularity.minutes, function (data) {
         progress.render(Types.FL, data.floors.today, data.floors.goal, floorSensor);
         progress.render(Types.CA, data.calories.today, data.calories.goal, calorieSensor);
     });
+
+    battery.fetch(function (data) {
+        display.render(Types.GV, data.level, stepDisplay, display.type.alignLeft);
+        progress.render(Types.GO, data.level, data.limit, stepProgress, true);
+    })
 });
 
 
@@ -89,13 +94,6 @@ clockModule.initialize(clockModule.granularity.minutes, function (data) {
 simpleHRM.initialize(function (data) {
     display.render(Types.HV, data.bpm, heartDisplay, display.type.alignRight);
     progress.render(Types.HR, data.bpm, 220, heartProgress, true);
-});
-
-
-/* -------- Battery ------------- */
-battery.initialize(clockModule.granularity.seconds, function (data) {
-    display.render(Types.GV, data.level, stepDisplay, display.type.alignLeft);
-    progress.render(Types.GO, data.level, 100, stepProgress, true);
 });
 
 
