@@ -30,12 +30,16 @@ const Types = {
 let background = document.getElementById("screen");
 
 // counter
-let step2Display = document.getElementById("step2-display");
-let step1Display = document.getElementById("step1-display");
-let step0Display = document.getElementById("step0-display");
-let heart2Display = document.getElementById("heart2-display");
-let heart1Display = document.getElementById("heart1-display");
-let heart0Display = document.getElementById("heart0-display");
+let stepDisplay = [
+    document.getElementById("step2-display"),
+    document.getElementById("step1-display"),
+    document.getElementById("step0-display")
+];
+let heartDisplay = [
+    document.getElementById("heart2-display"),
+    document.getElementById("heart1-display"),
+    document.getElementById("heart0-display")
+];
 
 // progress
 let stepProgress = document.getElementById("step-progress");
@@ -83,14 +87,14 @@ clockModule.initialize(clockModule.granularity.minutes, function (data) {
 
 /* -------- HRM ------------- */
 simpleHRM.initialize(function (data) {
-    display.render(Types.HV, data.bpm, [heart2Display, heart1Display, heart0Display], display.type.alignRight);
+    display.render(Types.HV, data.bpm, heartDisplay, display.type.alignRight);
     progress.render(Types.HR, data.bpm, 220, heartProgress, true);
 });
 
 
 /* -------- Battery ------------- */
 battery.initialize(clockModule.granularity.seconds, function (data) {
-    display.render(Types.GV, data.level, [step2Display, step1Display, step0Display], display.type.alignLeft);
+    display.render(Types.GV, data.level, stepDisplay, display.type.alignLeft);
     progress.render(Types.GO, data.level, 100, stepProgress, true);
 });
 

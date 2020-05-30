@@ -1,6 +1,7 @@
 import * as cache from "../../common/cache";
 
 export const FULL = '8'
+export const ZERO = '0'
 export const NONE = 'x'
 
 export const type = {
@@ -21,26 +22,40 @@ let displayMatrix = {
     '7': [1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1],
     '8': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     '9': [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+
+    //    0  1  2  3  4  5  6  7  8  9  10 11 12
+    '-': [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
     'x': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
 
 export function render(key, value, displayBlocks, format = type.digital) {
     cache.runOnUpdate(key, value, function () {
-        renderDisplay(value, displayBlocks, format);
+        renderDisplay(getDigits(value, displayBlocks.length, format), displayBlocks);
     });
 }
 
-function renderDisplay(number, displayBlocks, format) {
-    let digits = getDigitNumber(number, displayBlocks.length, format);
-
-    for (let i = 0, length = displayBlocks.length; i < length; i++) {
-        renderDigit(digits[i], displayBlocks[i]);
+function getDigits(value, displaySize, format) {
+    if (isNaN(value)) {
+        return getDigitString(value, displaySize, format);
+    } else {
+        return getDigitNumber(value, displaySize, format);
     }
 }
 
+function getDigitString(text, displaySize, format) {
+    let textSize = text.length || 0;
+    let decoration = "";
+
+    for (let index = displaySize; index > textSize; index--) {
+        if (index > textSize) {
+            decoration += getDigitDecoration(format);
+        }
+    }
+    return formatDigits(text, decoration, format);
+}
+
 function getDigitNumber(number, displaySize, format) {
-    let prefix = "";
-    let postfix = "";
+    let decoration = "";
 
     for (let index = displaySize; index > 0; index--) {
         let maxValue = Math.pow(10, index) - 1;
@@ -48,26 +63,41 @@ function getDigitNumber(number, displaySize, format) {
 
         if (number > maxValue) {
             if (index === displaySize) {
-                return maxValue.toString();
+                return formatDigits(maxValue, decoration, format);
+            } else {
+                break;
             }
-        } else if (number < minValue) {
-            switch(format) {
-                case type.digital: {
-                    prefix += '0';
-                    break;
-                }
-                case type.alignLeft: {
-                    postfix += NONE;
-                    break;
-                }
-                case type.alignRight: {
-                    prefix += NONE;
-                    break;
-                }
-            }
+        } else if (number <= minValue) {
+            decoration += getDigitDecoration(format);
         }
     }
-    return prefix + number + postfix;
+    return formatDigits(number, decoration, format);
+}
+
+function getDigitDecoration(format) {
+    switch (format) {
+        case type.digital:
+            return ZERO;
+        case type.alignLeft:
+        case type.alignRight:
+            return NONE;
+    }
+}
+
+function formatDigits(value, decoration, format) {
+    switch (format) {
+        case type.digital:
+        case type.alignRight:
+            return decoration + value;
+        case type.alignLeft:
+            return value + decoration;
+    }
+}
+
+function renderDisplay(digits, displayBlocks) {
+    for (let i = 0, length = displayBlocks.length; i < length; i++) {
+        renderDigit(digits[i], displayBlocks[i]);
+    }
 }
 
 function renderDigit(digit, displayBlock) {
