@@ -1,15 +1,13 @@
 // noinspection NpmUsedModulesInstalled
 import document from "document";
 
-import * as clock from "./platform/clock";
 import * as battery from "./platform/battery";
 import * as display from "./module/display";
 import * as progress from "./module/progress";
 import * as activity from "./module/activity";
 import * as heartBit from "./module/heartBit";
-
-// tmp
-import * as simpleSettings from "./platform/settings";
+import * as labels from "./module/labels";
+import * as looper from "./module/looper";
 
 // data types
 const Types = {
@@ -19,17 +17,19 @@ const Types = {
     DD: "cache.days",
     DS: "cache.date.separator",
     MO: "cache.months",
-    GO: "cache.main.goal.value",
-    GP: "cache.main.goal.progress",
+    UV: "cache.user.goal.value",
+    UP: "cache.user.goal.progress",
     HR: "cache.heart.rate.value",
     HP: "cache.heart.rate.progress",
     AM: "cache.active.minutes",
     ST: "cache.steps",
     FL: "cache.floors",
-    CA: "cache.calories"
+    CA: "cache.calories",
+    LC: "cache.label.color"
 }
 
-let background = document.getElementById("screen");
+// labels
+let textLabels = document.getElementsByTagName('text');
 
 // counter
 let stepDisplay = [
@@ -67,9 +67,14 @@ let stepSensor = document.getElementById("step-sensor");
 let floorSensor = document.getElementById("floor-sensor");
 let calorieSensor = document.getElementById("calorie-sensor");
 
+// register
+looper.register();
+heartBit.register();
 
-/* --------- CLOCK ---------- */
-clock.initialize(clock.granularity.minutes, function (data) {
+// looper
+looper.run(function (data) {
+    labels.render(Types.LC, textLabels);
+
     display.render(Types.HH, data.hour, [hour1Display, hour0Display]);
     display.render(Types.TS, display.FULL, [timeSepDisplay]);
     display.render(Types.MI, data.minute, [minute1Display, minute0Display]);
@@ -85,29 +90,13 @@ clock.initialize(clock.granularity.minutes, function (data) {
         progress.render(Types.CA, data.calories.today, data.calories.goal, calorieSensor);
     });
 
+    heartBit.fetch(function (data) {
+        display.render(Types.HR, data.bpm, heartDisplay, display.type.alignRight);
+        progress.render(Types.HP, data.bpm, 200, heartProgress, true);
+    });
+
     battery.fetch(function (data) {
-        display.render(Types.GO, data.level, stepDisplay, display.type.alignLeft);
-        progress.render(Types.GP, data.level, data.limit, stepProgress, true);
-    })
-});
-
-
-/* -------- HRM ------------- */
-heartBit.initialize(function (data) {
-    display.render(Types.HR, data.bpm, heartDisplay, display.type.alignRight);
-    progress.render(Types.HP, data.bpm, 200, heartProgress, true);
-});
-
-
-/* -------- SETTINGS -------- */
-simpleSettings.initialize(function (data) {
-    console.log("Settings date: " + data)
-
-    if (data) {
-        if (data['backgroundColor']) {
-            background.style.fill = data['backgroundColor'];
-        }
-        if (data['foregroundColor']) {
-        }
-    }
+        display.render(Types.UV, data.level, stepDisplay, display.type.alignLeft);
+        progress.render(Types.UP, data.level, data.limit, stepProgress, true);
+    });
 });

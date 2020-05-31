@@ -54,7 +54,7 @@ const options = [
     ['Foreground Color', 'foregroundColor']
 ];
 
-function mySettings(props) {
+function clockSettings(props) {
     return (
         <Page>
             {options.map(([title, settingsKey]) =>
@@ -67,4 +67,4 @@ function mySettings(props) {
 }
 
 // noinspection JSUnresolvedFunction
-registerSettingsPage(mySettings);
+registerSettingsPage(clockSettings);

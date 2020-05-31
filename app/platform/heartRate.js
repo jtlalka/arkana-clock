@@ -1,44 +1,40 @@
 import { HeartRateSensor } from "heart-rate";
 
-const INTERVAL_TIME = 1000;
-
 let rateSensor;
-let rateCallback;
 let lastRateTime;
-let intervalId;
-
-export function initialize(callback) {
-    if (HeartRateSensor && !rateSensor) {
-        rateSensor = new HeartRateSensor();
-    }
-    rateCallback = callback;
-    lastRateTime = 0;
-}
+let rateIsActive;
 
 export function start() {
-    if (!intervalId && rateSensor) {
-        rateSensor.start();
-        intervalId = setInterval(intervalAction, INTERVAL_TIME);
+    if (HeartRateSensor && !rateSensor) {
+        rateSensor = new HeartRateSensor();
+        lastRateTime = 0;
     }
-}
-
-function intervalAction() {
-    updateReceiver(rateSensor.heartRate, rateSensor.timestamp);
-    lastRateTime = rateSensor.timestamp;
-}
-
-function updateReceiver(heartRate, timestamp) {
-    rateCallback({
-        present: timestamp !== lastRateTime,
-        heartRate: heartRate,
-        timestamp: timestamp
-    });
+    if (rateSensor) {
+        rateSensor.start();
+        rateIsActive = true;
+    }
 }
 
 export function stop() {
-    if (intervalId && rateSensor) {
+    if (rateSensor) {
         rateSensor.stop();
-        clearInterval(intervalId);
-        intervalId = null;
+        rateIsActive = false;
     }
+}
+
+export function fetch(callback) {
+    if (rateSensor && rateIsActive) {
+        updateReceiver(callback, rateSensor.heartRate, rateSensor.timestamp);
+    } else {
+        updateReceiver(callback, 0, 0);
+    }
+}
+
+function updateReceiver(callback, heartRate, timestamp) {
+    callback({
+        present: timestamp !== lastRateTime,
+        heartRate: heartRate || 0,
+        timestamp: timestamp || 0
+    });
+    lastRateTime = timestamp;
 }

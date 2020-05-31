@@ -1,4 +1,5 @@
 import * as cache from "../../common/cache";
+import * as colors from "../../common/colors";
 
 export const FULL = '8';
 export const ZERO = '0';
@@ -109,9 +110,9 @@ function renderDigit(digit, displayBlock) {
 
     for (let i = 0, length = displayBlock.children.length; i < length; i++) {
         if (matrix[i]) {
-            displayBlock.children[i].style.fill = 'limegreen';
+            displayBlock.children[i].style.fill = colors.foregroundColor;
         } else {
-            displayBlock.children[i].style.fill = 'fb-extra-dark-gray';
+            displayBlock.children[i].style.fill = colors.backgroundColor;
         }
     }
 }

@@ -9,12 +9,6 @@ export function runOnUpdate(key, value, updateCallback) {
     }
 }
 
-export function get(key) {
-    if (cache.hasOwnProperty(key)) {
-        return cache[key];
-    }
-}
-
 export function clearCache() {
     for (let key in cache) {
         if (cache.hasOwnProperty(key)) {

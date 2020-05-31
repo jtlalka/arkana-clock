@@ -1,4 +1,5 @@
 import * as cache from "../../common/cache";
+import * as colors from "../../common/colors";
 
 export function render(key, value, limit, displayBlock, isInvertedScale = false) {
     let percentage = calculatePercentage(value, limit);
@@ -10,7 +11,7 @@ export function render(key, value, limit, displayBlock, isInvertedScale = false)
 }
 
 function calculatePercentage(value, limit) {
-    return value / limit || 0;
+    return Math.min(value / limit || 0, 1);
 }
 
 function calculateLevel(percentage, size) {
@@ -20,9 +21,9 @@ function calculateLevel(percentage, size) {
 function renderProgress(level, displayBlock, isInvertedScale) {
     for (let i = 0, length = displayBlock.children.length; i < length; i++) {
         if (getUnifiedIndex(length, i, isInvertedScale) < level) {
-            displayBlock.children[i].style.fill = 'limegreen';
+            displayBlock.children[i].style.fill = colors.foregroundColor;
         } else {
-            displayBlock.children[i].style.fill = 'fb-extra-dark-gray';
+            displayBlock.children[i].style.fill = colors.backgroundColor;
         }
     }
 }

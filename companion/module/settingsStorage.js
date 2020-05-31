@@ -2,7 +2,7 @@ import * as messaging from "messaging";
 import { settingsStorage } from "settings";
 
 export function initialize() {
-    settingsStorage.addEventListener("change", evt => {
+    settingsStorage.addEventListener("change", function(evt) {
         if (evt.oldValue !== evt.newValue) {
             sendValue(evt.key, evt.newValue);
         }
@@ -22,6 +22,6 @@ function sendSettingData(data) {
     if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
         messaging.peerSocket.send(data);
     } else {
-        console.log("No peerSocket connection");
+        console.log("No peerSocket connection.");
     }
 }

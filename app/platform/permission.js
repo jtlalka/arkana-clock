@@ -2,8 +2,7 @@ import { me } from 'appbit';
 
 export const type = {
     activity: 'access_activity',
-    heartRate: 'access_heart_rate',
-    userProfile: 'access_user_profile'
+    heartRate: 'access_heart_rate'
 }
 
 export function check(type) {

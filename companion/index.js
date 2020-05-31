@@ -1,3 +1,3 @@
-import * as settings from "./module/companion-settings";
+import * as settings from "./module/settingsStorage";
 
 settings.initialize();
