@@ -19,10 +19,10 @@ const Types = {
     DD: "cache.days",
     DS: "cache.date.separator",
     MO: "cache.months",
-    GO: "cache.main.goal",
-    GV: "cache.main.goal.value",
-    HR: "cache.heart.rate",
-    HV: "cache.heart.rate.value",
+    GO: "cache.main.goal.value",
+    GP: "cache.main.goal.progress",
+    HR: "cache.heart.rate.value",
+    HP: "cache.heart.rate.progress",
     AM: "cache.active.minutes",
     ST: "cache.steps",
     FL: "cache.floors",
@@ -86,19 +86,16 @@ clock.initialize(clock.granularity.minutes, function (data) {
     });
 
     battery.fetch(function (data) {
-        display.render(Types.GV, data.level, stepDisplay, display.type.alignLeft);
-        progress.render(Types.GO, data.level, data.limit, stepProgress, true);
+        display.render(Types.GO, data.level, stepDisplay, display.type.alignLeft);
+        progress.render(Types.GP, data.level, data.limit, stepProgress, true);
     })
 });
 
 
 /* -------- HRM ------------- */
 heartBit.initialize(function (data) {
-    console.log(`BPM: ${data.bpm}, present: ${data.present}, time: ${data.timestamp} -> ${Math.floor(Date.now() / 1000)}`);
-
-
-    display.render(Types.HV, data.bpm, heartDisplay, display.type.alignRight);
-    progress.render(Types.HR, data.bpm, 200, heartProgress, true);
+    display.render(Types.HR, data.bpm, heartDisplay, display.type.alignRight);
+    progress.render(Types.HP, data.bpm, 200, heartProgress, true);
 });
 
 

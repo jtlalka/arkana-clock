@@ -26,7 +26,7 @@ export function initialize(callback) {
 
 function setupCallback(callback, data) {
     callback({
-        bpm: data.present ? data.bpm : "---",
+        bpm: data.present ? data.heartRate : "---",
         timestamp: data.timestamp
     });
 }

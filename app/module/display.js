@@ -1,8 +1,8 @@
 import * as cache from "../../common/cache";
 
-export const FULL = '8'
-export const ZERO = '0'
-export const NONE = 'x'
+export const FULL = '8';
+export const ZERO = '0';
+export const NONE = 'x';
 
 export const type = {
     digital: 0,
@@ -25,6 +25,8 @@ let displayMatrix = {
 
     //    0  1  2  3  4  5  6  7  8  9  10 11 12
     '-': [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+    'e': [1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1],
+    'r': [0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0],
     'x': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
 
@@ -35,23 +37,13 @@ export function render(key, value, displayBlocks, format = type.digital) {
 }
 
 function getDigits(value, displaySize, format) {
-    if (isNaN(value)) {
+    if (typeof value === 'number') {
+        return getDigitNumber(value, displaySize, format);
+    } else if (typeof value === 'string') {
         return getDigitString(value, displaySize, format);
     } else {
-        return getDigitNumber(value, displaySize, format);
+        return getDigitString("err", displaySize, format);
     }
-}
-
-function getDigitString(text, displaySize, format) {
-    let textSize = text.length || 0;
-    let decoration = "";
-
-    for (let index = displaySize; index > textSize; index--) {
-        if (index > textSize) {
-            decoration += getDigitDecoration(format);
-        }
-    }
-    return formatDigits(text, decoration, format);
 }
 
 function getDigitNumber(number, displaySize, format) {
@@ -72,6 +64,18 @@ function getDigitNumber(number, displaySize, format) {
         }
     }
     return formatDigits(number, decoration, format);
+}
+
+function getDigitString(text, displaySize, format) {
+    let textSize = text.length || 0;
+    let decoration = "";
+
+    for (let index = displaySize; index > textSize; index--) {
+        if (index > textSize) {
+            decoration += getDigitDecoration(format);
+        }
+    }
+    return formatDigits(text, decoration, format);
 }
 
 function getDigitDecoration(format) {

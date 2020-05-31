@@ -1,44 +1,44 @@
 import { HeartRateSensor } from "heart-rate";
-import { BodyPresenceSensor } from "body-presence";
 
-const bodySensor = new BodyPresenceSensor();
-const rateSensor = new HeartRateSensor();
+const INTERVAL_TIME = 1000;
+
+let rateSensor;
+let rateCallback;
+let lastRateTime;
+let intervalId;
 
 export function initialize(callback) {
-    if (isBodySensorEnabled()) {
-        bodySensor.addEventListener("reading", function () {
-            updateReceiver(callback);
-        });
+    if (HeartRateSensor && !rateSensor) {
+        rateSensor = new HeartRateSensor();
     }
-    if (isHeartRateEnabled()) {
-        rateSensor.addEventListener("reading", function () {
-            updateReceiver(callback);
-        });
-    }
-}
-
-function isBodySensorEnabled() {
-    return BodyPresenceSensor || false;
-}
-
-function isHeartRateEnabled() {
-    return HeartRateSensor || false;
-}
-
-function updateReceiver(callback) {
-    callback({
-        bpm: rateSensor.heartRate,
-        timestamp: rateSensor.timestamp,
-        present: bodySensor.present
-    });
+    rateCallback = callback;
+    lastRateTime = 0;
 }
 
 export function start() {
-    bodySensor.start();
-    rateSensor.start();
+    if (!intervalId && rateSensor) {
+        rateSensor.start();
+        intervalId = setInterval(intervalAction, INTERVAL_TIME);
+    }
+}
+
+function intervalAction() {
+    updateReceiver(rateSensor.heartRate, rateSensor.timestamp);
+    lastRateTime = rateSensor.timestamp;
+}
+
+function updateReceiver(heartRate, timestamp) {
+    rateCallback({
+        present: timestamp !== lastRateTime,
+        heartRate: heartRate,
+        timestamp: timestamp
+    });
 }
 
 export function stop() {
-    bodySensor.stop();
-    rateSensor.stop();
+    if (intervalId && rateSensor) {
+        rateSensor.stop();
+        clearInterval(intervalId);
+        intervalId = null;
+    }
 }
