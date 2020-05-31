@@ -1,13 +1,20 @@
 import * as cache from "../../common/cache";
 
 export function render(key, value, limit, displayBlock, isInvertedScale = false) {
-    let percentage = value / limit;
-    let size = displayBlock.children.length;
-    let level = Math.floor(percentage * size);
+    let percentage = calculatePercentage(value, limit);
+    let level = calculateLevel(percentage, displayBlock.children.length);
 
     cache.runOnUpdate(key, level, function () {
         renderProgress(level, displayBlock, isInvertedScale);
     });
+}
+
+function calculatePercentage(value, limit) {
+    return value / limit || 0;
+}
+
+function calculateLevel(percentage, size) {
+    return Math.floor(percentage * size);
 }
 
 function renderProgress(level, displayBlock, isInvertedScale) {
