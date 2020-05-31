@@ -6,11 +6,11 @@ export function render(key, value, limit, displayBlock, isInvertedScale = false)
     let level = Math.floor(percentage * size);
 
     cache.runOnUpdate(key, level, function () {
-        renderProgress(key, level, displayBlock, isInvertedScale);
+        renderProgress(level, displayBlock, isInvertedScale);
     });
 }
 
-function renderProgress(key, level, displayBlock, isInvertedScale) {
+function renderProgress(level, displayBlock, isInvertedScale) {
     for (let i = 0, length = displayBlock.children.length; i < length; i++) {
         if (getUnifiedIndex(length, i, isInvertedScale) < level) {
             displayBlock.children[i].style.fill = 'limegreen';

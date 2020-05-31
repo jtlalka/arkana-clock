@@ -14,11 +14,18 @@ export function fetch(callback) {
     } else {
         callback({
             primaryGoal: '',
-            steps: activity.getDeniedStats(),
-            floors: activity.getDeniedStats(),
-            calories: activity.getDeniedStats(),
-            distance: activity.getDeniedStats(),
-            activeMinutes: activity.getDeniedStats()
+            steps: getDeniedStats(),
+            floors: getDeniedStats(),
+            calories: getDeniedStats(),
+            distance: getDeniedStats(),
+            activeMinutes: getDeniedStats()
         });
+    }
+}
+
+function getDeniedStats() {
+    return {
+        today: 0,
+        goal: undefined
     }
 }

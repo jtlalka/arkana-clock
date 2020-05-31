@@ -46,10 +46,3 @@ export function getDistanceMeters() {
         goal: goals.distance || defaultValue.distanceMeters
     }
 }
-
-export function getDeniedStats() {
-    return {
-        today: 0,
-        goal: undefined
-    }
-}

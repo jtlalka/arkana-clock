@@ -1,13 +1,15 @@
 // noinspection NpmUsedModulesInstalled
 import document from "document";
 
-import * as clockModule from "./platform/clock";
-import * as simpleHRM from "./platform/hrm";
-import * as simpleSettings from "./platform/settings";
+import * as clock from "./platform/clock";
 import * as battery from "./platform/battery";
-import * as progress from "./module/progress";
 import * as display from "./module/display";
-import * as sensors from "./module/sensors";
+import * as progress from "./module/progress";
+import * as activity from "./module/activity";
+import * as heartBit from "./module/heartBit";
+
+// tmp
+import * as simpleSettings from "./platform/settings";
 
 // data types
 const Types = {
@@ -67,7 +69,7 @@ let calorieSensor = document.getElementById("calorie-sensor");
 
 
 /* --------- CLOCK ---------- */
-clockModule.initialize(clockModule.granularity.minutes, function (data) {
+clock.initialize(clock.granularity.minutes, function (data) {
     display.render(Types.HH, data.hour, [hour1Display, hour0Display]);
     display.render(Types.TS, display.FULL, [timeSepDisplay]);
     display.render(Types.MI, data.minute, [minute1Display, minute0Display]);
@@ -76,7 +78,7 @@ clockModule.initialize(clockModule.granularity.minutes, function (data) {
     display.render(Types.DS, display.FULL, [dateSepDisplay]);
     display.render(Types.MO, data.month, [month1Display, month0Display]);
 
-    sensors.fetch(function (data) {
+    activity.fetch(function (data) {
         progress.render(Types.AM, data.activeMinutes.today, data.activeMinutes.goal, activitySensor);
         progress.render(Types.ST, data.steps.today, data.steps.goal, stepSensor);
         progress.render(Types.FL, data.floors.today, data.floors.goal, floorSensor);
@@ -91,9 +93,12 @@ clockModule.initialize(clockModule.granularity.minutes, function (data) {
 
 
 /* -------- HRM ------------- */
-simpleHRM.initialize(function (data) {
+heartBit.initialize(function (data) {
+    console.log(`BPM: ${data.bpm}, present: ${data.present}, time: ${data.timestamp} -> ${Math.floor(Date.now() / 1000)}`);
+
+
     display.render(Types.HV, data.bpm, heartDisplay, display.type.alignRight);
-    progress.render(Types.HR, data.bpm, 220, heartProgress, true);
+    progress.render(Types.HR, data.bpm, 200, heartProgress, true);
 });
 
 
