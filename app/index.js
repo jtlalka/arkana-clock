@@ -126,7 +126,7 @@ function updateHeartRate(data) {
     if (data) {
         sensors.fetchHeartRate(function (data) {
             display.render(Types.HR, data.bpm, heartDisplay, display.type.alignRight);
-            progress.render(Types.HP, data.bpm, 200, heartProgress, true);
+            progress.render(Types.HP, data.bpm, 200, heartProgress, progress.type.inverted);
         });
     }
 }
@@ -135,7 +135,7 @@ function updateBattery(data) {
     if (data) {
         battery.fetch(function (data) {
             display.render(Types.UV, data.level, stepDisplay, display.type.alignLeft);
-            progress.render(Types.UP, data.level, data.limit, stepProgress, true);
+            progress.render(Types.UP, data.level, data.limit, stepProgress, progress.type.inverted);
         });
     }
 }

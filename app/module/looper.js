@@ -19,8 +19,6 @@ export function enableAlwaysOnMode() {
 
 export function enableSettingsObserver() {
     settings.initialize(function (data) {
-        console.log("Settings date: " + data);
-
         if (data) {
             colors.setForegroundColor(data['foregroundColor']);
             colors.setBackgroundColor(data['backgroundColor']);
