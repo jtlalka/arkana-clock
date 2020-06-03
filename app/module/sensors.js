@@ -1,10 +1,31 @@
 import * as activity from "../platform/activity";
+import * as heartRate from "../platform/heartRate";
 import * as permission from "../platform/permission";
 
-export function fetch(callback) {
+export function activate() {
+    if (permission.check(permission.type.heartRate)) {
+        heartRate.start();
+    }
+}
+
+export function deactivate() {
+    if (permission.check(permission.type.heartRate)) {
+        heartRate.stop();
+    }
+}
+
+export function fetchHeartRate(callback) {
+    heartRate.fetch(function (data) {
+        callback({
+            bpm: data.present ? data.heartRate : "---",
+            timestamp: data.timestamp
+        });
+    });
+}
+
+export function fetchActivity(callback) {
     if (permission.check(permission.type.activity)) {
         callback({
-            primaryGoal: activity.getPrimaryGoal(),
             steps: activity.getSteps(),
             floors: activity.getFloors(),
             calories: activity.getCalories(),
@@ -13,7 +34,6 @@ export function fetch(callback) {
         });
     } else {
         callback({
-            primaryGoal: '',
             steps: getDeniedStats(),
             floors: getDeniedStats(),
             calories: getDeniedStats(),

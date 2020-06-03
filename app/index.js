@@ -4,8 +4,7 @@ import document from "document";
 import * as battery from "./platform/battery";
 import * as display from "./module/display";
 import * as progress from "./module/progress";
-import * as activity from "./module/activity";
-import * as heartBit from "./module/heartBit";
+import * as sensors from "./module/sensors";
 import * as labels from "./module/labels";
 import * as looper from "./module/looper";
 
@@ -31,12 +30,14 @@ const Types = {
 // labels
 let textLabels = document.getElementsByTagName('text');
 
-// counter
+// steps
 let stepDisplay = [
     document.getElementById("step2-display"),
     document.getElementById("step1-display"),
     document.getElementById("step0-display")
 ];
+
+// heart
 let heartDisplay = [
     document.getElementById("heart2-display"),
     document.getElementById("heart1-display"),
@@ -68,35 +69,79 @@ let floorSensor = document.getElementById("floor-sensor");
 let calorieSensor = document.getElementById("calorie-sensor");
 
 // register
-looper.register();
-heartBit.register();
+looper.enableAlwaysOnMode();
+looper.enableSettingsObserver();
+looper.enableScreenObserver();
 
 // looper
 looper.run(function (data) {
-    labels.render(Types.LC, textLabels);
 
-    display.render(Types.HH, data.hour, [hour1Display, hour0Display]);
-    display.render(Types.TS, display.FULL, [timeSepDisplay]);
-    display.render(Types.MI, data.minute, [minute1Display, minute0Display]);
+    labels.display(textLabels, data.labels);
+    labels.display(stepDisplay, data.labels);
+    labels.display(heartDisplay, data.labels);
 
-    display.render(Types.DD, data.day, [day1Display, day0Display], display.type.alignRight);
-    display.render(Types.DS, display.FULL, [dateSepDisplay]);
-    display.render(Types.MO, data.month, [month1Display, month0Display]);
+    heartProgress.style.display = data.heartRate ? "inline" : "none";
+    stepProgress.style.display = data.battery ? "inline" : "none";
+    activitySensor.style.display = data.activity ? "inline" : "none";
+    stepSensor.style.display = data.activity ? "inline" : "none";
+    floorSensor.style.display = data.activity ? "inline" : "none";
+    calorieSensor.style.display = data.activity ? "inline" : "none";
 
-    activity.fetch(function (data) {
-        progress.render(Types.AM, data.activeMinutes.today, data.activeMinutes.goal, activitySensor);
-        progress.render(Types.ST, data.steps.today, data.steps.goal, stepSensor);
-        progress.render(Types.FL, data.floors.today, data.floors.goal, floorSensor);
-        progress.render(Types.CA, data.calories.today, data.calories.goal, calorieSensor);
-    });
-
-    heartBit.fetch(function (data) {
-        display.render(Types.HR, data.bpm, heartDisplay, display.type.alignRight);
-        progress.render(Types.HP, data.bpm, 200, heartProgress, true);
-    });
-
-    battery.fetch(function (data) {
-        display.render(Types.UV, data.level, stepDisplay, display.type.alignLeft);
-        progress.render(Types.UP, data.level, data.limit, stepProgress, true);
-    });
+    updateDate(data.date);
+    updateTime(data.time);
+    updateActivity(data.activity);
+    updateHeartRate(data.heartRate);
+    updateBattery(data.battery);
+    updateLabels(data.labels);
 });
+
+function updateDate(data) {
+    if (data) {
+        display.render(Types.DD, data.day, [day1Display, day0Display], display.type.alignRight);
+        display.render(Types.DS, display.FULL, [dateSepDisplay]);
+        display.render(Types.MO, data.month, [month1Display, month0Display]);
+    }
+}
+
+function updateTime(data) {
+    if (data) {
+        display.render(Types.HH, data.hour, [hour1Display, hour0Display]);
+        display.render(Types.TS, display.FULL, [timeSepDisplay]);
+        display.render(Types.MI, data.minute, [minute1Display, minute0Display]);
+    }
+}
+
+function updateActivity(data) {
+    if (data) {
+        sensors.fetchActivity(function (data) {
+            progress.render(Types.AM, data.activeMinutes.today, data.activeMinutes.goal, activitySensor);
+            progress.render(Types.ST, data.steps.today, data.steps.goal, stepSensor);
+            progress.render(Types.FL, data.floors.today, data.floors.goal, floorSensor);
+            progress.render(Types.CA, data.calories.today, data.calories.goal, calorieSensor);
+        });
+    }
+}
+
+function updateHeartRate(data) {
+    if (data) {
+        sensors.fetchHeartRate(function (data) {
+            display.render(Types.HR, data.bpm, heartDisplay, display.type.alignRight);
+            progress.render(Types.HP, data.bpm, 200, heartProgress, true);
+        });
+    }
+}
+
+function updateBattery(data) {
+    if (data) {
+        battery.fetch(function (data) {
+            display.render(Types.UV, data.level, stepDisplay, display.type.alignLeft);
+            progress.render(Types.UP, data.level, data.limit, stepProgress, true);
+        });
+    }
+}
+
+function updateLabels(data) {
+    if (data) {
+        labels.render(Types.LC, textLabels);
+    }
+}

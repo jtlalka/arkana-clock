@@ -1,6 +1,7 @@
 import { me } from 'appbit';
 
 export const type = {
+    accessAod: 'access_aod',
     activity: 'access_activity',
     heartRate: 'access_heart_rate'
 }

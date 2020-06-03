@@ -12,3 +12,9 @@ function updateLabelColor(labels) {
         labels[i].style.fill = colors.foregroundColor;
     }
 }
+
+export function display(labels, isVisible) {
+    for (let i = 0; i < labels.length; i++) {
+        labels[i].style.display = isVisible ? "inline" : "none";
+    }
+}

@@ -4,16 +4,19 @@ export function initialize(callback) {
     display.addEventListener("change", function () {
         updateCallback(callback);
     });
-
-    if (display.on) {
-        updateCallback(callback);
-    }
+    updateCallback(callback);
 }
 
 function updateCallback(callback) {
     callback({
-        active: display.on,
+        present: display.on,
         aodActive: display.aodActive,
         aodAvailable: display.aodAvailable
     });
+}
+
+export function enableAlwaysOnMode() {
+    if (display.aodAvailable) {
+        display.aodAllowed = true;
+    }
 }

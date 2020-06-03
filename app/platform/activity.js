@@ -1,4 +1,4 @@
-import { today, primaryGoal, goals } from 'user-activity';
+import { today, goals } from 'user-activity';
 
 const defaultValue = {
     steps: 1000,
@@ -6,10 +6,6 @@ const defaultValue = {
     calories: 3000,
     activeMinutes: 30,
     distanceMeters: 8046
-}
-
-export function getPrimaryGoal() {
-    return primaryGoal;
 }
 
 export function getSteps() {

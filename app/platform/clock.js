@@ -15,11 +15,9 @@ export const granularity = {
 /**
  * Clock listener.
  *
- * @param granularity Granularity at which clockCallback should be emitted.
  * @param clockCallback Callback with data time information.
  */
-export function initialize(granularity, clockCallback) {
-    clock.granularity = granularity;
+export function initialize(clockCallback) {
     clock.addEventListener('tick', function (evt) {
         clockCallback({
             day: evt.date.getDate(),
@@ -30,4 +28,13 @@ export function initialize(granularity, clockCallback) {
             second: evt.date.getSeconds()
         });
     });
+}
+
+/**
+ * Set time granularity.
+ *
+ * @param granularity Granularity at which clockCallback should be emitted.
+ */
+export function setGranularity(granularity) {
+    clock.granularity = granularity;
 }
