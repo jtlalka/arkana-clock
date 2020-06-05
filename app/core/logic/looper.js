@@ -23,7 +23,7 @@ export function enableSettingsObserver() {
             colors.setForegroundColor(data['foregroundColor']);
             colors.setBackgroundColor(data['backgroundColor']);
             cache.clearCache();
-            updateCallback(lastDateValue);
+            forceUpdateCallback();
         }
     });
 }
@@ -34,12 +34,12 @@ export function enableScreenObserver() {
             clock.setGranularity(clock.granularity.seconds);
             sensors.activate();
             isDisplayActive = true;
-            updateCallback(lastDateValue);
+            forceUpdateCallback();
         } else {
             clock.setGranularity(clock.granularity.minutes);
             sensors.deactivate();
             isDisplayActive = false;
-            updateCallback(lastDateValue);
+            forceUpdateCallback();
         }
     });
 }
@@ -52,23 +52,27 @@ export function run(callback) {
     });
 }
 
-function updateCallback(data) {
-    if (looperCallback) {
-        looperCallback({
-            date: {
-                day: data.day,
-                month: data.month,
-                year: data.year
-            },
-            time: {
-                hour: preferences.getUserHoursFormat(data.hour),
-                minute: data.minute,
-                second: data.second
-            },
-            activity: isDisplayActive,
-            heartRate: isDisplayActive,
-            battery: isDisplayActive,
-            labels: isDisplayActive
-        });
+function forceUpdateCallback() {
+    if (looperCallback && lastDateValue) {
+        updateCallback(lastDateValue);
     }
+}
+
+function updateCallback(data) {
+    looperCallback({
+        date: {
+            day: data.day,
+            month: data.month,
+            year: data.year
+        },
+        time: {
+            hour: preferences.getUserHoursFormat(data.hour),
+            minute: data.minute,
+            second: data.second
+        },
+        active: isDisplayActive,
+        activity: isDisplayActive,
+        heartRate: isDisplayActive,
+        battery: isDisplayActive
+    });
 }

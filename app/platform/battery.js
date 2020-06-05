@@ -1,12 +1,16 @@
+// noinspection NpmUsedModulesInstalled
 import { battery, charger } from "power";
 
 /**
- * Battery data.
+ * Get current battery level.
  */
-export function fetch(callback) {
-    callback({
-        connected: charger['connected'],
-        level: battery['chargeLevel'],
-        limit: 100
-    });
+export function getBatteryLevel() {
+    return battery['chargeLevel'];
+}
+
+/**
+ * Is battery charging.
+ */
+export function isCharging() {
+    return charger['connected'];
 }

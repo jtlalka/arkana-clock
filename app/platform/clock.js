@@ -1,4 +1,5 @@
-import { clock } from 'clock';
+// noinspection NpmUsedModulesInstalled
+import { clock } from "clock";
 
 /**
  * Granularity at which initialization callback is triggered.

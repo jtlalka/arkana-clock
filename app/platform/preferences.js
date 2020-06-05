@@ -1,4 +1,5 @@
-import { units, preferences } from 'user-settings';
+// noinspection NpmUsedModulesInstalled
+import { units, preferences } from "user-settings";
 
 export function getUserHoursFormat(hour) {
     if (preferences['clockDisplay'] === '12h') {

@@ -1,4 +1,5 @@
 import * as activity from "../../platform/activity";
+import * as battery from "../../platform/battery";
 import * as heartRate from "../../platform/heartRate";
 import * as permission from "../../platform/permission";
 
@@ -12,15 +13,6 @@ export function deactivate() {
     if (permission.check(permission.type.heartRate)) {
         heartRate.stop();
     }
-}
-
-export function fetchHeartRate(callback) {
-    heartRate.fetch(function (data) {
-        callback({
-            bpm: data.present ? data.heartRate : "---",
-            timestamp: data.timestamp
-        });
-    });
 }
 
 export function fetchActivity(callback) {
@@ -48,4 +40,21 @@ function getDeniedStats() {
         today: 0,
         goal: undefined
     }
+}
+
+export function fetchHeartRate(callback) {
+    heartRate.fetch(function (data) {
+        callback({
+            bpm: data.present ? data.heartRate : "---",
+            timestamp: data.timestamp
+        });
+    });
+}
+
+export function fetchBatteryData(callback) {
+    callback({
+        connected: battery.isCharging(),
+        level: battery.getBatteryLevel(),
+        limit: 100
+    });
 }

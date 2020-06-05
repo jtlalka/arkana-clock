@@ -1,14 +1,13 @@
 // noinspection NpmUsedModulesInstalled
 import document from "document";
 
-import * as battery from "./platform/battery";
+import * as labels from "./core/ui/labels";
 import * as display from "./core/ui/display";
 import * as progress from "./core/ui/progress";
-import * as labels from "./core/ui/labels";
 import * as sensors from "./core/logic/sensors";
 import * as looper from "./core/logic/looper";
 
-// data types
+// cache types
 const Types = {
     HH: "cache.hours",
     TS: "cache.time.separator",
@@ -16,14 +15,15 @@ const Types = {
     DD: "cache.days",
     DS: "cache.date.separator",
     MO: "cache.months",
-    UV: "cache.user.goal.value",
-    UP: "cache.user.goal.progress",
+    UV: "cache.battery.value",
+    UP: "cache.battery.progress",
     HR: "cache.heart.rate.value",
     HP: "cache.heart.rate.progress",
     AM: "cache.active.minutes",
     ST: "cache.steps",
     FL: "cache.floors",
     CA: "cache.calories",
+    ON: "cache.screen.on",
     LC: "cache.label.color"
 }
 
@@ -75,25 +75,23 @@ looper.enableScreenObserver();
 
 // looper
 looper.run(function (data) {
-
-    labels.display(textLabels, data.labels);
-    labels.display(stepDisplay, data.labels);
-    labels.display(heartDisplay, data.labels);
-
-    heartProgress.style.display = data.heartRate ? "inline" : "none";
-    stepProgress.style.display = data.battery ? "inline" : "none";
-    activitySensor.style.display = data.activity ? "inline" : "none";
-    stepSensor.style.display = data.activity ? "inline" : "none";
-    floorSensor.style.display = data.activity ? "inline" : "none";
-    calorieSensor.style.display = data.activity ? "inline" : "none";
+    updateDisplayElements(data.active);
 
     updateDate(data.date);
     updateTime(data.time);
     updateActivity(data.activity);
     updateHeartRate(data.heartRate);
     updateBattery(data.battery);
-    updateLabels(data.labels);
+    updateLabels(data.active);
 });
+
+function updateDisplayElements(isVisible) {
+    labels.display(Types.ON, isVisible, [
+        heartProgress, stepProgress,
+        day1Display, day0Display, dateSepDisplay, month1Display, month0Display,
+        activitySensor, stepSensor, floorSensor, calorieSensor
+    ].concat(textLabels, heartDisplay, stepDisplay));
+}
 
 function updateDate(data) {
     if (data) {
@@ -111,8 +109,8 @@ function updateTime(data) {
     }
 }
 
-function updateActivity(data) {
-    if (data) {
+function updateActivity(flag) {
+    if (flag) {
         sensors.fetchActivity(function (data) {
             progress.render(Types.AM, data.activeMinutes.today, data.activeMinutes.goal, activitySensor);
             progress.render(Types.ST, data.steps.today, data.steps.goal, stepSensor);
@@ -122,8 +120,8 @@ function updateActivity(data) {
     }
 }
 
-function updateHeartRate(data) {
-    if (data) {
+function updateHeartRate(flag) {
+    if (flag) {
         sensors.fetchHeartRate(function (data) {
             display.render(Types.HR, data.bpm, heartDisplay, display.type.alignRight);
             progress.render(Types.HP, data.bpm, 200, heartProgress, progress.type.inverted);
@@ -131,17 +129,17 @@ function updateHeartRate(data) {
     }
 }
 
-function updateBattery(data) {
-    if (data) {
-        battery.fetch(function (data) {
+function updateBattery(flag) {
+    if (flag) {
+        sensors.fetchBatteryData(function (data) {
             display.render(Types.UV, data.level, stepDisplay, display.type.alignLeft);
             progress.render(Types.UP, data.level, data.limit, stepProgress, progress.type.inverted);
         });
     }
 }
 
-function updateLabels(data) {
-    if (data) {
-        labels.render(Types.LC, textLabels);
+function updateLabels(flag) {
+    if (flag) {
+        labels.foregroundColor(Types.LC, textLabels);
     }
 }

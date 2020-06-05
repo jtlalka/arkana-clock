@@ -1,3 +1,4 @@
+// noinspection NpmUsedModulesInstalled
 import { HeartRateSensor } from "heart-rate";
 
 let rateSensor;

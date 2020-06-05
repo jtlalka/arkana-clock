@@ -1,3 +1,4 @@
+// noinspection NpmUsedModulesInstalled
 import { display } from "display";
 
 export function initialize(callback) {

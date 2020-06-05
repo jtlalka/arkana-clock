@@ -1,4 +1,5 @@
-import { today, goals } from 'user-activity';
+// noinspection NpmUsedModulesInstalled
+import { today, goals } from "user-activity";
 
 const defaultValue = {
     steps: 1000,

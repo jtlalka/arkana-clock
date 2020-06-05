@@ -1,4 +1,5 @@
-import { me } from 'appbit';
+// noinspection NpmUsedModulesInstalled
+import { me } from "appbit";
 
 export const type = {
     accessAod: 'access_aod',

@@ -1,20 +1,26 @@
 import * as cache from "../utils/cache";
 import * as colors from "../utils/colors";
 
-export function render(key, labels) {
-    cache.runOnUpdate(key, colors.foregroundColor, function () {
-        updateLabelColor(labels);
+export function display(key, isVisible, elements) {
+    cache.runOnUpdate(key, isVisible, function () {
+        updateDisplayValue(elements, isVisible ? 'inline' : 'none');
     });
 }
 
-function updateLabelColor(labels) {
-    for (let i = 0; i < labels.length; i++) {
-        labels[i].style.fill = colors.foregroundColor;
+function updateDisplayValue(elements, value) {
+    for (let i = 0, length = elements.length; i < length; i++) {
+        elements[i].style.display = value;
     }
 }
 
-export function display(labels, isVisible) {
-    for (let i = 0; i < labels.length; i++) {
-        labels[i].style.display = isVisible ? "inline" : "none";
+export function foregroundColor(key, elements) {
+    cache.runOnUpdate(key, colors.foregroundColor, function () {
+        updateForegroundColor(elements);
+    });
+}
+
+function updateForegroundColor(elements) {
+    for (let i = 0, length = elements.length; i < length; i++) {
+        elements[i].style.fill = colors.foregroundColor;
     }
 }
