@@ -1,11 +1,11 @@
 // noinspection NpmUsedModulesInstalled
 import document from "document";
 
-import * as labels from "./core/ui/labels";
+import * as elements from "./core/ui/elements";
 import * as display from "./core/ui/display";
 import * as progress from "./core/ui/progress";
+import * as render from "./core/logic/render";
 import * as sensors from "./core/logic/sensors";
-import * as looper from "./core/logic/looper";
 
 // cache types
 const Types = {
@@ -69,12 +69,12 @@ let floorSensor = document.getElementById("floor-sensor");
 let calorieSensor = document.getElementById("calorie-sensor");
 
 // register
-looper.enableAlwaysOnMode();
-looper.enableSettingsObserver();
-looper.enableScreenObserver();
+render.enableAlwaysOnMode();
+render.enableSettingsObserver();
+render.enableScreenObserver();
 
-// looper
-looper.run(function (data) {
+// render
+render.run(function (data) {
     updateDisplayElements(data.active);
 
     updateDate(data.date);
@@ -86,7 +86,7 @@ looper.run(function (data) {
 });
 
 function updateDisplayElements(isVisible) {
-    labels.display(Types.ON, isVisible, [
+    elements.display(Types.ON, isVisible, [
         heartProgress, stepProgress,
         day1Display, day0Display, dateSepDisplay, month1Display, month0Display,
         activitySensor, stepSensor, floorSensor, calorieSensor
@@ -140,6 +140,6 @@ function updateBattery(flag) {
 
 function updateLabels(flag) {
     if (flag) {
-        labels.foregroundColor(Types.LC, textLabels);
+        elements.foregroundColor(Types.LC, textLabels);
     }
 }

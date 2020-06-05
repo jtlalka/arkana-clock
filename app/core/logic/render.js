@@ -7,7 +7,7 @@ import * as permission from "../../platform/permission";
 import * as preferences from "../../platform/preferences";
 import * as sensors from "../logic/sensors";
 
-let looperCallback;
+let renderCallback;
 let lastDateValue;
 let isDisplayActive;
 
@@ -45,7 +45,7 @@ export function enableScreenObserver() {
 }
 
 export function run(callback) {
-    looperCallback = callback;
+    renderCallback = callback;
     clock.initialize(function (data) {
         lastDateValue = data;
         updateCallback(data);
@@ -53,13 +53,13 @@ export function run(callback) {
 }
 
 function forceUpdateCallback() {
-    if (looperCallback && lastDateValue) {
+    if (renderCallback && lastDateValue) {
         updateCallback(lastDateValue);
     }
 }
 
 function updateCallback(data) {
-    looperCallback({
+    renderCallback({
         date: {
             day: data.day,
             month: data.month,
