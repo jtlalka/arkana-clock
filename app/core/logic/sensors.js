@@ -1,6 +1,6 @@
-import * as activity from "../platform/activity";
-import * as heartRate from "../platform/heartRate";
-import * as permission from "../platform/permission";
+import * as activity from "../../platform/activity";
+import * as heartRate from "../../platform/heartRate";
+import * as permission from "../../platform/permission";
 
 export function activate() {
     if (permission.check(permission.type.heartRate)) {

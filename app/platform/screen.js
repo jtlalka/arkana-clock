@@ -11,7 +11,8 @@ function updateCallback(callback) {
     callback({
         present: display.on,
         aodActive: display.aodActive,
-        aodAvailable: display.aodAvailable
+        aodAvailable: display.aodAvailable,
+        isActivatedByUser: display.on && !display.aodActive
     });
 }
 

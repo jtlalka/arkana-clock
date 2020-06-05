@@ -1,5 +1,5 @@
-import * as cache from "../../common/cache";
-import * as colors from "../../common/colors";
+import * as cache from "../utils/cache";
+import * as colors from "../utils/colors";
 
 export function render(key, labels) {
     cache.runOnUpdate(key, colors.foregroundColor, function () {

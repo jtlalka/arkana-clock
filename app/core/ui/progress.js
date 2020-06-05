@@ -1,10 +1,10 @@
-import * as cache from "../../common/cache";
-import * as colors from "../../common/colors";
+import * as cache from "../utils/cache";
+import * as colors from "../utils/colors";
 
 export const type = {
     regular: 0,
     inverted: 1,
-    onlyLast: 2
+    pointer: 2
 }
 
 export function render(key, value, limit, displayBlock, format = type.regular) {
@@ -40,7 +40,7 @@ function isDisplay(length, level, index, format) {
             return index < level;
         case type.inverted:
             return length - 1 - index < level;
-        case type.onlyLast:
+        case type.pointer:
             return index + 1 === level;
     }
 }

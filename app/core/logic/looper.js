@@ -1,11 +1,11 @@
-import * as cache from "../../common/cache";
-import * as colors from "../../common/colors";
-import * as clock from "../platform/clock";
-import * as screen from "../platform/screen";
-import * as settings from "../platform/settings";
-import * as permission from "../platform/permission";
-import * as preferences from "../platform/preferences";
-import * as sensors from "../module/sensors";
+import * as cache from "../utils/cache";
+import * as colors from "../utils/colors";
+import * as clock from "../../platform/clock";
+import * as screen from "../../platform/screen";
+import * as settings from "../../platform/settings";
+import * as permission from "../../platform/permission";
+import * as preferences from "../../platform/preferences";
+import * as sensors from "../logic/sensors";
 
 let looperCallback;
 let lastDateValue;
@@ -30,7 +30,7 @@ export function enableSettingsObserver() {
 
 export function enableScreenObserver() {
     screen.initialize(function (data) {
-        if (isDisplayActivatedByUser(data)) {
+        if (data.isActivatedByUser) {
             clock.setGranularity(clock.granularity.seconds);
             sensors.activate();
             isDisplayActive = true;
@@ -42,10 +42,6 @@ export function enableScreenObserver() {
             updateCallback(lastDateValue);
         }
     });
-}
-
-function isDisplayActivatedByUser(data) {
-    return data.present && !data.aodActive
 }
 
 export function run(callback) {

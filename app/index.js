@@ -2,11 +2,11 @@
 import document from "document";
 
 import * as battery from "./platform/battery";
-import * as display from "./module/display";
-import * as progress from "./module/progress";
-import * as sensors from "./module/sensors";
-import * as labels from "./module/labels";
-import * as looper from "./module/looper";
+import * as display from "./core/ui/display";
+import * as progress from "./core/ui/progress";
+import * as labels from "./core/ui/labels";
+import * as sensors from "./core/logic/sensors";
+import * as looper from "./core/logic/looper";
 
 // data types
 const Types = {
