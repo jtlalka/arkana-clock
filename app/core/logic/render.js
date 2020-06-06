@@ -2,10 +2,10 @@ import * as cache from "../utils/cache";
 import * as colors from "../utils/colors";
 import * as clock from "../../platform/clock";
 import * as screen from "../../platform/screen";
-import * as settings from "../../platform/settings";
 import * as permission from "../../platform/permission";
 import * as preferences from "../../platform/preferences";
-import * as sensors from "../logic/sensors";
+import * as settings from "./settings";
+import * as sensors from "./sensors";
 
 let renderCallback;
 let lastDateValue;
@@ -19,12 +19,10 @@ export function enableAlwaysOnMode() {
 
 export function enableSettingsObserver() {
     settings.initialize(function (data) {
-        if (data) {
-            colors.setForegroundColor(data['foregroundColor']);
-            colors.setBackgroundColor(data['backgroundColor']);
-            cache.clearCache();
-            forceUpdateCallback();
-        }
+        colors.setForegroundColor(data['foregroundColor']);
+        colors.setBackgroundColor(data['backgroundColor']);
+        cache.clearCache();
+        forceUpdateCallback();
     });
 }
 

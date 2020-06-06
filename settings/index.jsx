@@ -41,19 +41,17 @@ const options = [
             {color: "darkslateblue"},
             {color: "slateblue"},
             {color: "steelblue"},
-            {color: "cadetblue"},
             {color: "teal"},
             {color: "darkslategray"},
             {color: "darkgreen"},
-            {color: "green"},
             {color: "darkolivegreen"},
+            {color: "green"},
             {color: "saddlebrown"},
             {color: "indianred"},
             {color: "brown"},
             {color: "maroon"},
             {color: "purple"},
             {color: "blueviolet"},
-            {color: "rosybrown"},
             {color: "dimgrey"},
             {color: "#303030"},
             {color: "black"}
@@ -61,7 +59,7 @@ const options = [
     }
 ];
 
-function clockSettings(props) {
+function clockSettings() {
     return (
         <Page>
             {options.map(item =>
