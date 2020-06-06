@@ -9,11 +9,11 @@ export function initialize() {
     });
 }
 
-function sendValue(key, val) {
-    if (val) {
+function sendValue(key, value) {
+    if (value) {
         sendSettingData({
             key: key,
-            value: JSON.parse(val)
+            value: JSON.parse(value)
         });
     }
 }

@@ -1,5 +1,5 @@
-export let foregroundColor = 'limegreen';
-export let backgroundColor = 'fb-extra-dark-gray';
+export let foregroundColor = 'cyan';
+export let backgroundColor = 'darkslateblue';
 
 export function setForegroundColor(value) {
     if (value) {

@@ -1,65 +1,72 @@
-const colorSet = [
-    {color: "black"},
-    {color: "darkslategrey"},
-    {color: "dimgrey"},
-    {color: "grey"},
-    {color: "lightgrey"},
-    {color: "beige"},
-    {color: "white"},
-    {color: "maroon"},
-    {color: "saddlebrown"},
-    {color: "darkgoldenrod"},
-    {color: "goldenrod"},
-    {color: "rosybrown"},
-    {color: "wheat"},
-    {color: "navy"},
-    {color: "blue"},
-    {color: "dodgerblue"},
-    {color: "deepskyblue"},
-    {color: "aquamarine"},
-    {color: "cyan"},
-    {color: "olive"},
-    {color: "darkgreen"},
-    {color: "green"},
-    {color: "springgreen"},
-    {color: "limegreen"},
-    {color: "palegreen"},
-    {color: "lime"},
-    {color: "greenyellow"},
-    {color: "darkslateblue"},
-    {color: "slateblue"},
-    {color: "purple"},
-    {color: "fuchsia"},
-    {color: "plum"},
-    {color: "orchid"},
-    {color: "lavender"},
-    {color: "darkkhaki"},
-    {color: "khaki"},
-    {color: "lemonchiffon"},
-    {color: "yellow"},
-    {color: "gold"},
-    {color: "orangered"},
-    {color: "orange"},
-    {color: "coral"},
-    {color: "lightpink"},
-    {color: "palevioletred"},
-    {color: "deeppink"},
-    {color: "darkred"},
-    {color: "crimson"},
-    {color: "red"}
-];
-
 const options = [
-    ['Background Color', 'backgroundColor'],
-    ['Foreground Color', 'foregroundColor']
+    {
+        title: 'Active screen color',
+        key: 'foregroundColor',
+        values: [
+            {color: "dodgerblue"},
+            {color: "deepskyblue"},
+            {color: "cyan"},
+            {color: "aquamarine"},
+            {color: "springgreen"},
+            {color: "lime"},
+            {color: "limegreen"},
+            {color: "greenyellow"},
+            {color: "yellow"},
+            {color: "gold"},
+            {color: "orange"},
+            {color: "darkorange"},
+            {color: "coral"},
+            {color: "orangered"},
+            {color: "red"},
+            {color: "deeppink"},
+            {color: "fuchsia"},
+            {color: "orchid"},
+            {color: "plum"},
+            {color: "lightpink"},
+            {color: "palevioletred"},
+            {color: "khaki"},
+            {color: "bisque"},
+            {color: "lemonchiffon"},
+            {color: "floralwhite"},
+            {color: "lavender"},
+            {color: "lightgrey"},
+            {color: "white"}
+        ]
+    },
+    {
+        title: 'Inactive screen color',
+        key: 'backgroundColor',
+        values: [
+            {color: "midnightblue"},
+            {color: "darkslateblue"},
+            {color: "slateblue"},
+            {color: "steelblue"},
+            {color: "cadetblue"},
+            {color: "teal"},
+            {color: "darkslategray"},
+            {color: "darkgreen"},
+            {color: "green"},
+            {color: "darkolivegreen"},
+            {color: "saddlebrown"},
+            {color: "indianred"},
+            {color: "brown"},
+            {color: "maroon"},
+            {color: "purple"},
+            {color: "blueviolet"},
+            {color: "rosybrown"},
+            {color: "dimgrey"},
+            {color: "#303030"},
+            {color: "black"}
+        ]
+    }
 ];
 
 function clockSettings(props) {
     return (
         <Page>
-            {options.map(([title, settingsKey]) =>
-                <Section title={title}>
-                    <ColorSelect settingsKey={settingsKey} colors={colorSet}/>
+            {options.map(item =>
+                <Section title={item.title}>
+                    <ColorSelect settingsKey={item.key} colors={item.values}/>
                 </Section>
             )}
         </Page>
