@@ -2,9 +2,6 @@
     <defs>
         <link rel="stylesheet" href="styles/index.css" />
         <link rel="stylesheet" href="styles/widgets.css" />
-        <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
-        <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.gui" />
-        <link rel="import" href="/mnt/sysassets/widgets/cycleview_widget.gui" />
 
         <!-- Progress -->
         <symbol id="progress">
@@ -41,22 +38,22 @@
         <!-- Clock 1 number -->
         <symbol id="clock-1-number">
             <rect x="0" y="0" class="digit-dot" />
-            <rect x="$+1" y="0" class="digit-x-line" />
-            <rect x="$+1" y="0" class="digit-dot" />
+            <rect x="6" y="0" class="digit-x-line" />
+            <rect x="27" y="0" class="digit-dot" />
 
             <rect x="0" y="6" class="digit-y-line" />
             <rect x="27" y="6" class="digit-y-line" />
 
             <rect x="0" y="27" class="digit-dot" />
-            <rect x="$+1" y="27" class="digit-x-line" />
-            <rect x="$+1" y="27" class="digit-dot" />
+            <rect x="6" y="27" class="digit-x-line" />
+            <rect x="27" y="27" class="digit-dot" />
 
             <rect x="0" y="33" class="digit-y-line" />
             <rect x="27" y="33" class="digit-y-line" />
 
             <rect x="0" y="54" class="digit-dot" />
-            <rect x="$+1" y="54" class="digit-x-line" />
-            <rect x="$+1" y="54" class="digit-dot" />
+            <rect x="6" y="54" class="digit-x-line" />
+            <rect x="27" y="54" class="digit-dot" />
         </symbol>
 
         <!-- Clock 1 colon -->
@@ -68,22 +65,22 @@
         <!-- Clock 2 number -->
         <symbol id="clock-2-number">
             <rect x="0" y="0" class="digit-dot" />
-            <rect x="$+1" y="0" class="digit-x-line" />
-            <rect x="$+1" y="0" class="digit-dot" />
+            <rect x="4" y="0" class="digit-x-line" />
+            <rect x="17" y="0" class="digit-dot" />
 
             <rect x="0" y="4" class="digit-y-line" />
             <rect x="17" y="4" class="digit-y-line" />
 
             <rect x="0" y="17" class="digit-dot" />
-            <rect x="$+1" y="17" class="digit-x-line" />
-            <rect x="$+1" y="17" class="digit-dot" />
+            <rect x="4" y="17" class="digit-x-line" />
+            <rect x="17" y="17" class="digit-dot" />
 
             <rect x="0" y="21" class="digit-y-line" />
             <rect x="17" y="21" class="digit-y-line" />
 
             <rect x="0" y="34" class="digit-dot" />
-            <rect x="$+1" y="34" class="digit-x-line" />
-            <rect x="$+1" y="34" class="digit-dot" />
+            <rect x="4" y="34" class="digit-x-line" />
+            <rect x="17" y="34" class="digit-dot" />
         </symbol>
 
         <!-- Clock 2 dash -->
@@ -94,22 +91,22 @@
         <!-- Clock 3 number -->
         <symbol id="clock-3-number">
             <rect x="0" y="0" class="digit-dot" />
-            <rect x="$+1" y="0" class="digit-x-line" />
-            <rect x="$+1" y="0" class="digit-dot" />
+            <rect x="3" y="0" class="digit-x-line" />
+            <rect x="12" y="0" class="digit-dot" />
 
             <rect x="0" y="3" class="digit-y-line" />
             <rect x="12" y="3" class="digit-y-line" />
 
             <rect x="0" y="12" class="digit-dot" />
-            <rect x="$+1" y="12" class="digit-x-line" />
-            <rect x="$+1" y="12" class="digit-dot" />
+            <rect x="3" y="12" class="digit-x-line" />
+            <rect x="12" y="12" class="digit-dot" />
 
             <rect x="0" y="15" class="digit-y-line" />
             <rect x="12" y="15" class="digit-y-line" />
 
             <rect x="0" y="24" class="digit-dot" />
-            <rect x="$+1" y="24" class="digit-x-line" />
-            <rect x="$+1" y="24" class="digit-dot" />
+            <rect x="3" y="24" class="digit-x-line" />
+            <rect x="12" y="24" class="digit-dot" />
         </symbol>
 
     </defs>

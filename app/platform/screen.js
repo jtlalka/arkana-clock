@@ -2,7 +2,7 @@
 import { display } from "display";
 
 export function initialize(callback) {
-    display.addEventListener("change", function () {
+    display.addEventListener('change', function () {
         updateCallback(callback);
     });
     updateCallback(callback);

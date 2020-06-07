@@ -2,7 +2,7 @@ let cache = {};
 
 export function runOnUpdate(key, value, updateCallback) {
     if (cache[key] === undefined || cache[key] !== value) {
-        cache[key] = value
+        cache[key] = value;
         updateCallback();
     }
 }

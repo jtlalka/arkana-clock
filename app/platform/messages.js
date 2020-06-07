@@ -1,6 +1,6 @@
 // noinspection NpmUsedModulesInstalled
 import * as messaging from "messaging";
 
-export function registerMessageReceiver(messageCallback) {
+export function registerMessageListener(messageCallback) {
     messaging.peerSocket.addEventListener('message', messageCallback);
 }

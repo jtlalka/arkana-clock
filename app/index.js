@@ -9,22 +9,22 @@ import * as sensors from "./core/logic/sensors";
 
 // cache types
 const Types = {
-    HH: "cache.hours",
-    TS: "cache.time.separator",
-    MI: "cache.minutes",
-    DD: "cache.days",
-    DS: "cache.date.separator",
-    MO: "cache.months",
-    UV: "cache.battery.value",
-    UP: "cache.battery.progress",
-    HR: "cache.heart.rate.value",
-    HP: "cache.heart.rate.progress",
-    AM: "cache.active.minutes",
-    ST: "cache.steps",
-    FL: "cache.floors",
-    CA: "cache.calories",
-    ON: "cache.screen.on",
-    LC: "cache.label.color"
+    HH: 'cache.hours',
+    TS: 'cache.time.separator',
+    MI: 'cache.minutes',
+    DD: 'cache.days',
+    DS: 'cache.date.separator',
+    MO: 'cache.months',
+    UV: 'cache.battery.value',
+    UP: 'cache.battery.progress',
+    HR: 'cache.heart.rate.value',
+    HP: 'cache.heart.rate.progress',
+    AM: 'cache.active.minutes',
+    ST: 'cache.steps',
+    FL: 'cache.floors',
+    CA: 'cache.calories',
+    ON: 'cache.screen.on',
+    LC: 'cache.label.color'
 }
 
 // labels
@@ -32,41 +32,41 @@ let textLabels = document.getElementsByTagName('text');
 
 // steps
 let stepDisplay = [
-    document.getElementById("step2-display"),
-    document.getElementById("step1-display"),
-    document.getElementById("step0-display")
+    document.getElementById('step2-display'),
+    document.getElementById('step1-display'),
+    document.getElementById('step0-display')
 ];
 
 // heart
 let heartDisplay = [
-    document.getElementById("heart2-display"),
-    document.getElementById("heart1-display"),
-    document.getElementById("heart0-display")
+    document.getElementById('heart2-display'),
+    document.getElementById('heart1-display'),
+    document.getElementById('heart0-display')
 ];
 
 // progress
-let stepProgress = document.getElementById("step-progress");
-let heartProgress = document.getElementById("heart-progress");
+let stepProgress = document.getElementById('step-progress');
+let heartProgress = document.getElementById('heart-progress');
 
 // time
-let hour1Display = document.getElementById("hour1-display");
-let hour0Display = document.getElementById("hour0-display");
-let timeSepDisplay = document.getElementById("time-sep-display");
-let minute1Display = document.getElementById("minute1-display");
-let minute0Display = document.getElementById("minute0-display");
+let hour1Display = document.getElementById('hour1-display');
+let hour0Display = document.getElementById('hour0-display');
+let timeSepDisplay = document.getElementById('time-sep-display');
+let minute1Display = document.getElementById('minute1-display');
+let minute0Display = document.getElementById('minute0-display');
 
 // date
-let day1Display = document.getElementById("day1-display");
-let day0Display = document.getElementById("day0-display");
-let dateSepDisplay = document.getElementById("date-sep-display");
-let month1Display = document.getElementById("month1-display");
-let month0Display = document.getElementById("month0-display");
+let day1Display = document.getElementById('day1-display');
+let day0Display = document.getElementById('day0-display');
+let dateSepDisplay = document.getElementById('date-sep-display');
+let month1Display = document.getElementById('month1-display');
+let month0Display = document.getElementById('month0-display');
 
 // sensors
-let activitySensor = document.getElementById("activity-sensor");
-let stepSensor = document.getElementById("step-sensor");
-let floorSensor = document.getElementById("floor-sensor");
-let calorieSensor = document.getElementById("calorie-sensor");
+let activitySensor = document.getElementById('activity-sensor');
+let stepSensor = document.getElementById('step-sensor');
+let floorSensor = document.getElementById('floor-sensor');
+let calorieSensor = document.getElementById('calorie-sensor');
 
 // register
 render.enableAlwaysOnMode();

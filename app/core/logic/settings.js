@@ -25,7 +25,7 @@ function registerSettingsSaver() {
 }
 
 function registerSettingsObserver(callback) {
-    messages.registerMessageReceiver(function (msg) {
+    messages.registerMessageListener(function (msg) {
         settings[msg.data.key] = msg.data.value;
         callback(settings);
     });
