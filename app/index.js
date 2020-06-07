@@ -69,7 +69,7 @@ let floorSensor = document.getElementById('floor-sensor');
 let calorieSensor = document.getElementById('calorie-sensor');
 
 // register
-render.enableAlwaysOnMode();
+// render.enableAlwaysOnMode();
 render.enableSettingsObserver();
 render.enableScreenObserver();
 

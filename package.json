@@ -6,7 +6,6 @@
         "wipeColor": "",
         "defaultLanguage": "en-US",
         "requestedPermissions": [
-            "access_aod",
             "access_activity",
             "access_heart_rate"
         ],
