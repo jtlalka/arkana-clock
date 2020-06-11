@@ -6,6 +6,7 @@ import * as display from "./core/ui/display";
 import * as progress from "./core/ui/progress";
 import * as render from "./core/logic/render";
 import * as sensors from "./core/logic/sensors";
+import * as config from "./core/utils/config";
 
 // cache types
 const Types = {
@@ -56,11 +57,11 @@ let minute1Display = document.getElementById('minute1-display');
 let minute0Display = document.getElementById('minute0-display');
 
 // date
-let day1Display = document.getElementById('day1-display');
-let day0Display = document.getElementById('day0-display');
+let date3Display = document.getElementById('date3-display');
+let date2Display = document.getElementById('date2-display');
 let dateSepDisplay = document.getElementById('date-sep-display');
-let month1Display = document.getElementById('month1-display');
-let month0Display = document.getElementById('month0-display');
+let date1Display = document.getElementById('date1-display');
+let date0Display = document.getElementById('date0-display');
 
 // sensors
 let activitySensor = document.getElementById('activity-sensor');
@@ -88,16 +89,22 @@ render.run(function (data) {
 function updateDisplayElements(isVisible) {
     elements.display(Types.ON, isVisible, [
         heartProgress, stepProgress,
-        day1Display, day0Display, dateSepDisplay, month1Display, month0Display,
+        date3Display, date2Display, dateSepDisplay, date1Display, date0Display,
         activitySensor, stepSensor, floorSensor, calorieSensor
     ].concat(textLabels, heartDisplay, stepDisplay));
 }
 
 function updateDate(data) {
     if (data) {
-        display.render(Types.DD, data.day, [day1Display, day0Display], display.type.alignRight);
-        display.render(Types.DS, display.FULL, [dateSepDisplay]);
-        display.render(Types.MO, data.month, [month1Display, month0Display]);
+        if (config.dateFormat === 'MM-DD') {
+            display.render(Types.MO, data.month, [date3Display, date2Display], display.type.alignRight);
+            display.render(Types.DS, display.FULL, [dateSepDisplay]);
+            display.render(Types.DD, data.day, [date1Display, date0Display]);
+        } else {
+            display.render(Types.DD, data.day, [date3Display, date2Display], display.type.alignRight);
+            display.render(Types.DS, display.FULL, [dateSepDisplay]);
+            display.render(Types.MO, data.month, [date1Display, date0Display]);
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 import * as cache from "../utils/cache";
-import * as colors from "../utils/colors";
+import * as config from "../utils/config";
 
 export function display(key, isVisible, elements) {
     cache.runOnUpdate(key, isVisible, function () {
@@ -14,13 +14,13 @@ function updateDisplayValue(elements, value) {
 }
 
 export function foregroundColor(key, elements) {
-    cache.runOnUpdate(key, colors.foregroundColor, function () {
+    cache.runOnUpdate(key, config.foregroundColor, function () {
         updateForegroundColor(elements);
     });
 }
 
 function updateForegroundColor(elements) {
     for (let i = 0, length = elements.length; i < length; i++) {
-        elements[i].style.fill = colors.foregroundColor;
+        elements[i].style.fill = config.foregroundColor;
     }
 }

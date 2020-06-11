@@ -1,5 +1,5 @@
 import * as cache from "../utils/cache";
-import * as colors from "../utils/colors";
+import * as config from "../utils/config";
 
 export const FULL = '8';
 export const ZERO = '0';
@@ -110,9 +110,9 @@ function renderDigit(digit, displayBlock) {
 
     for (let i = 0, length = displayBlock.children.length; i < length; i++) {
         if (matrix[i]) {
-            displayBlock.children[i].style.fill = colors.foregroundColor;
+            displayBlock.children[i].style.fill = config.foregroundColor;
         } else {
-            displayBlock.children[i].style.fill = colors.backgroundColor;
+            displayBlock.children[i].style.fill = config.backgroundColor;
         }
     }
 }

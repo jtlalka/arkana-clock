@@ -1,5 +1,5 @@
 import * as cache from "../utils/cache";
-import * as colors from "../utils/colors";
+import * as config from "../utils/config";
 import * as clock from "../../platform/clock";
 import * as screen from "../../platform/screen";
 import * as permission from "../../platform/permission";
@@ -19,8 +19,13 @@ export function enableAlwaysOnMode() {
 
 export function enableSettingsObserver() {
     settings.initialize(function (data) {
-        colors.setForegroundColor(data['foregroundColor']);
-        colors.setBackgroundColor(data['backgroundColor']);
+
+        console.log("AAA:" + data['dateFormat'].values[0]);
+        console.log("AAA:" + data['dateFormat'].values[0].name);
+
+        config.setDateFormat(data['dateFormat']);
+        config.setForegroundColor(data['foregroundColor']);
+        config.setBackgroundColor(data['backgroundColor']);
         cache.clearCache();
         forceUpdateCallback();
     });

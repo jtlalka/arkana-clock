@@ -1,5 +1,5 @@
 import * as cache from "../utils/cache";
-import * as colors from "../utils/colors";
+import * as config from "../utils/config";
 
 export const type = {
     regular: 0,
@@ -27,9 +27,9 @@ function calculateLevel(percentage, size) {
 function renderProgress(level, displayBlock, format) {
     for (let i = 0, length = displayBlock.children.length; i < length; i++) {
         if (isDisplay(length, level, i, format)) {
-            displayBlock.children[i].style.fill = colors.foregroundColor;
+            displayBlock.children[i].style.fill = config.foregroundColor;
         } else {
-            displayBlock.children[i].style.fill = colors.backgroundColor;
+            displayBlock.children[i].style.fill = config.backgroundColor;
         }
     }
 }
