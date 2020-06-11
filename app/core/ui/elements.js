@@ -15,12 +15,12 @@ function updateDisplayValue(elements, value) {
 
 export function foregroundColor(key, elements) {
     cache.runOnUpdate(key, config.foregroundColor, function () {
-        updateForegroundColor(elements);
+        updateFillColor(elements, config.foregroundColor);
     });
 }
 
-function updateForegroundColor(elements) {
+function updateFillColor(elements, color) {
     for (let i = 0, length = elements.length; i < length; i++) {
-        elements[i].style.fill = config.foregroundColor;
+        elements[i].style.fill = color;
     }
 }

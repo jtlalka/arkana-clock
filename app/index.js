@@ -15,7 +15,7 @@ const Types = {
     MI: 'cache.minutes',
     DD: 'cache.days',
     DS: 'cache.date.separator',
-    MO: 'cache.months',
+    MM: 'cache.months',
     UV: 'cache.battery.value',
     UP: 'cache.battery.progress',
     HR: 'cache.heart.rate.value',
@@ -31,7 +31,7 @@ const Types = {
 // labels
 let textLabels = document.getElementsByTagName('text');
 
-// steps
+// custom
 let stepDisplay = [
     document.getElementById('step2-display'),
     document.getElementById('step1-display'),
@@ -50,11 +50,11 @@ let stepProgress = document.getElementById('step-progress');
 let heartProgress = document.getElementById('heart-progress');
 
 // time
-let hour1Display = document.getElementById('hour1-display');
-let hour0Display = document.getElementById('hour0-display');
+let time3Display = document.getElementById('time3-display');
+let time2Display = document.getElementById('time2-display');
 let timeSepDisplay = document.getElementById('time-sep-display');
-let minute1Display = document.getElementById('minute1-display');
-let minute0Display = document.getElementById('minute0-display');
+let time1Display = document.getElementById('time1-display');
+let time0Display = document.getElementById('time0-display');
 
 // date
 let date3Display = document.getElementById('date3-display');
@@ -96,23 +96,23 @@ function updateDisplayElements(isVisible) {
 
 function updateDate(data) {
     if (data) {
-        if (config.dateFormat === 'MM-DD') {
-            display.render(Types.MO, data.month, [date3Display, date2Display], display.type.alignRight);
-            display.render(Types.DS, display.FULL, [dateSepDisplay]);
-            display.render(Types.DD, data.day, [date1Display, date0Display]);
-        } else {
+        if (config.dateFormat === 'DD-MM') {
             display.render(Types.DD, data.day, [date3Display, date2Display], display.type.alignRight);
             display.render(Types.DS, display.FULL, [dateSepDisplay]);
-            display.render(Types.MO, data.month, [date1Display, date0Display]);
+            display.render(Types.MM, data.month, [date1Display, date0Display]);
+        } else {
+            display.render(Types.MM, data.month, [date3Display, date2Display], display.type.alignRight);
+            display.render(Types.DS, display.FULL, [dateSepDisplay]);
+            display.render(Types.DD, data.day, [date1Display, date0Display]);
         }
     }
 }
 
 function updateTime(data) {
     if (data) {
-        display.render(Types.HH, data.hour, [hour1Display, hour0Display]);
+        display.render(Types.HH, data.hour, [time3Display, time2Display]);
         display.render(Types.TS, display.FULL, [timeSepDisplay]);
-        display.render(Types.MI, data.minute, [minute1Display, minute0Display]);
+        display.render(Types.MI, data.minute, [time1Display, time0Display]);
     }
 }
 
@@ -131,7 +131,7 @@ function updateHeartRate(flag) {
     if (flag) {
         sensors.fetchHeartRate(function (data) {
             display.render(Types.HR, data.bpm, heartDisplay, display.type.alignRight);
-            progress.render(Types.HP, data.bpm, 200, heartProgress, progress.type.inverted);
+            progress.render(Types.HP, data.bpm, data.limit, heartProgress, progress.type.inverted);
         });
     }
 }

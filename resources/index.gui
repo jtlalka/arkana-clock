@@ -1,6 +1,6 @@
 <svg id="screen">
 
-    <!-- Steps counter -->
+    <!-- Custom counter -->
     <section class="top-start">
         <use id="step2-display" class="counter-item" href="#clock-3-number" />
         <use id="step1-display" class="counter-item" href="#clock-3-number" />
@@ -14,7 +14,7 @@
         <use id="heart0-display" class="counter-item" href="#clock-3-number" />
     </section>
 
-    <!-- Steps progress -->
+    <!-- Custom progress -->
     <use id="step-progress" href="#progress" class="progress-start">
         <set href="#progress-step-12" attributeName="x" to="0" />
         <set href="#progress-step-11" attributeName="x" to="0" />
@@ -57,31 +57,31 @@
 
     <!-- Time -->
     <section class="center">
-        <use id="hour1-display" class="time-item" href="#clock-1-number" />
-        <use id="hour0-display" class="time-item" href="#clock-1-number" />
+        <use id="time3-display" class="time-item" href="#clock-1-number" />
+        <use id="time2-display" class="time-item" href="#clock-1-number" />
         <use id="time-sep-display" class="time-item" href="#clock-1-colon" />
-        <use id="minute1-display" class="time-item" href="#clock-1-number" />
-        <use id="minute0-display" class="time-item" href="#clock-1-number" />
+        <use id="time1-display" class="time-item" href="#clock-1-number" />
+        <use id="time0-display" class="time-item" href="#clock-1-number" />
     </section>
 
     <section class="footer">
 
-        <section class="ring-sensor">
+        <section class="sensor">
             <text>ACTX</text>
             <use id="activity-sensor" class="ring-item" href="#sensor" />
         </section>
 
-        <section class="ring-sensor">
+        <section class="sensor">
             <text>STEP</text>
             <use id="step-sensor" class="ring-item" href="#sensor" />
         </section>
 
-        <section class="ring-sensor">
+        <section class="sensor">
             <text>FLRS</text>
             <use id="floor-sensor" class="ring-item" href="#sensor" />
         </section>
 
-        <section class="ring-sensor">
+        <section class="sensor">
             <text>CALS</text>
             <use id="calorie-sensor" class="ring-item" href="#sensor" />
         </section>

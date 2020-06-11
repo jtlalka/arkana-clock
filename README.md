@@ -9,9 +9,9 @@ Product is available on: [Fitbit App Gallery](https://gallery.fitbit.com/details
 ![screen1](./statics/screenshot-01.png) | ![screen2](./statics/screenshot-02.png) | ![screen2](./statics/screenshot-03.png)
 ![screen1](./statics/screenshot-04.png) | ![screen2](./statics/screenshot-05.png) | ![screen2](./statics/screenshot-06.png)
 
-### Descriptions
+### Store summary
 ```
-Clock with activities and sensors in retro style which contanes:
+Simple and elegant watch face. Retro design, reach of content:
 - battery rate and level indicator (top left)
 - heart rate and level indicator (top right)
 - day, month and time (center)
@@ -20,10 +20,10 @@ Clock with activities and sensors in retro style which contanes:
 ----
 Key features:
 - always uptodate heart rate value,
-- calculate dayly activity progress based on personal goals,
-- battery friendly clock face, series of optimisations are increasing your battery life,
+- calculate daily activity progress based on personal goals,
 - colours configuration, use clock settings to build your own display colour combination,
-- change between 12/24 hour display in your personal settings on the Fitbit website or mobile application.
+- date format configuration, select between day-month and month-day date format in clock settings,
+- battery friendly clock face, series of optimisations are increasing your battery life.
 
 ----
 Arkana Clock - builded with passions :)
@@ -34,3 +34,9 @@ Arkana Clock - builded with passions :)
 No third-party libraries and dependencies.
 Built based on Fitbit guidelines and best practices.
 ```
+
+### TODO
+
+- extract settings keys to `common` shared properties
+- change battery indicator to configurable component, options: `battery`, `steps per hour`
+- enable AOD mode in `index` and `package.json`

@@ -19,10 +19,6 @@ export function enableAlwaysOnMode() {
 
 export function enableSettingsObserver() {
     settings.initialize(function (data) {
-
-        console.log("AAA:" + data['dateFormat'].values[0]);
-        console.log("AAA:" + data['dateFormat'].values[0].name);
-
         config.setDateFormat(data['dateFormat']);
         config.setForegroundColor(data['foregroundColor']);
         config.setBackgroundColor(data['backgroundColor']);

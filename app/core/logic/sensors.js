@@ -46,7 +46,8 @@ export function fetchHeartRate(callback) {
     heartRate.fetch(function (data) {
         callback({
             bpm: data.present ? data.heartRate : "---",
-            timestamp: data.timestamp
+            timestamp: data.timestamp,
+            limit: 200
         });
     });
 }
