@@ -20,10 +20,10 @@ const Types = {
     UP: 'cache.battery.progress',
     HR: 'cache.heart.rate.value',
     HP: 'cache.heart.rate.progress',
-    AM: 'cache.active.minutes',
-    ST: 'cache.steps',
-    FL: 'cache.floors',
-    CA: 'cache.calories',
+    S1: 'cache.sensor.1',
+    S2: 'cache.sensor.2',
+    S3: 'cache.sensor.3',
+    S4: 'cache.sensor.4',
     ON: 'cache.screen.on',
     LC: 'cache.label.color'
 }
@@ -64,10 +64,13 @@ let date1Display = document.getElementById('date1-display');
 let date0Display = document.getElementById('date0-display');
 
 // sensors
-let activitySensor = document.getElementById('activity-sensor');
-let stepSensor = document.getElementById('step-sensor');
-let floorSensor = document.getElementById('floor-sensor');
-let calorieSensor = document.getElementById('calorie-sensor');
+let sensor1Ring = document.getElementById('sensor1-ring');
+let sensor2Ring = document.getElementById('sensor2-ring');
+let sensor3Ring = document.getElementById('sensor3-ring');
+let sensor4Ring = document.getElementById('sensor4-ring');
+
+// texts
+let sensor3Text = document.getElementById('sensor3-text');
 
 // register
 // render.enableAlwaysOnMode();
@@ -90,7 +93,7 @@ function updateDisplayElements(isVisible) {
     elements.display(Types.ON, isVisible, [
         heartProgress, stepProgress,
         date3Display, date2Display, dateSepDisplay, date1Display, date0Display,
-        activitySensor, stepSensor, floorSensor, calorieSensor
+        sensor1Ring, sensor2Ring, sensor3Ring, sensor4Ring
     ].concat(textLabels, heartDisplay, stepDisplay));
 }
 
@@ -119,10 +122,18 @@ function updateTime(data) {
 function updateActivity(flag) {
     if (flag) {
         sensors.fetchActivity(function (data) {
-            progress.render(Types.AM, data.activeMinutes.today, data.activeMinutes.goal, activitySensor);
-            progress.render(Types.ST, data.steps.today, data.steps.goal, stepSensor);
-            progress.render(Types.FL, data.floors.today, data.floors.goal, floorSensor);
-            progress.render(Types.CA, data.calories.today, data.calories.goal, calorieSensor);
+            progress.render(Types.S1, data.activeMinutes.today, data.activeMinutes.goal, sensor1Ring);
+            progress.render(Types.S2, data.steps.today, data.steps.goal, sensor2Ring);
+            progress.render(Types.S4, data.calories.today, data.calories.goal, sensor4Ring);
+
+            // Versa Lite does not count floors:
+            if (data.floors.active) {
+                sensor3Text.text = "FLRS"
+                progress.render(Types.S3, data.floors.today, data.floors.goal, sensor3Ring);
+            } else {
+                sensor3Text.text = "DIST"
+                progress.render(Types.S3, data.distance.today, data.distance.goal, sensor3Ring);
+            }
         });
     }
 }

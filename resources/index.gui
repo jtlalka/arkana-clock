@@ -64,28 +64,24 @@
         <use id="time0-display" class="time-item" href="#clock-1-number" />
     </section>
 
+    <!-- Sensors -->
     <section class="footer">
-
         <section class="sensor">
-            <text>ACTX</text>
-            <use id="activity-sensor" class="ring-item" href="#sensor" />
+            <text id="sensor1-text">ACTX</text>
+            <use id="sensor1-ring" class="ring-item" href="#sensor" />
         </section>
-
         <section class="sensor">
-            <text>STEP</text>
-            <use id="step-sensor" class="ring-item" href="#sensor" />
+            <text id="sensor2-text">STEP</text>
+            <use id="sensor2-ring" class="ring-item" href="#sensor" />
         </section>
-
         <section class="sensor">
-            <text>FLRS</text>
-            <use id="floor-sensor" class="ring-item" href="#sensor" />
+            <text id="sensor3-text">FLRS</text>
+            <use id="sensor3-ring" class="ring-item" href="#sensor" />
         </section>
-
         <section class="sensor">
-            <text>CALS</text>
-            <use id="calorie-sensor" class="ring-item" href="#sensor" />
+            <text id="sensor4-text">CALS</text>
+            <use id="sensor4-ring" class="ring-item" href="#sensor" />
         </section>
-
     </section>
 
 </svg>

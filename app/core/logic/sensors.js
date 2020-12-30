@@ -26,19 +26,12 @@ export function fetchActivity(callback) {
         });
     } else {
         callback({
-            steps: getDeniedStats(),
-            floors: getDeniedStats(),
-            calories: getDeniedStats(),
-            distance: getDeniedStats(),
-            activeMinutes: getDeniedStats()
+            steps: activity.getInactiveStats(),
+            floors: activity.getInactiveStats(),
+            calories: activity.getInactiveStats(),
+            distance: activity.getInactiveStats(),
+            activeMinutes: activity.getInactiveStats()
         });
-    }
-}
-
-function getDeniedStats() {
-    return {
-        today: 0,
-        goal: undefined
     }
 }
 
