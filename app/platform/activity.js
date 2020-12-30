@@ -5,7 +5,7 @@ const defaultValue = {
     steps: 1000,
     floors: 10,
     calories: 3000,
-    activeMinutes: 30,
+    activeMinutes: 22,
     distanceMeters: 8046
 }
 
@@ -18,7 +18,7 @@ export function getSteps() {
 
 export function getFloors() {
     return {
-        today: today.local.elevationGain !== undefined ? today.adjusted.elevationGain || 0 : 0,
+        today: today.adjusted.elevationGain || 0,
         goal: goals.elevationGain || defaultValue.floors
     }
 }
@@ -32,8 +32,8 @@ export function getCalories() {
 
 export function getActiveMinutes() {
     return {
-        today: today.adjusted.activeMinutes || 0,
-        goal: goals.activeMinutes || defaultValue.activeMinutes
+        today: today.adjusted.activeZoneMinutes.total || 0,
+        goal: goals.activeZoneMinutes.total || defaultValue.activeMinutes
     }
 }
 
