@@ -1,13 +1,13 @@
 /* screen */
 .header {
-    x: 50%-58;
+    x: 50%-63;
     y: 0;
     width: 106;
     height: 30%;
 }
 
 .center {
-    x: 50%-80;
+    x: 50%-84;
     y: 50%-50;
     width: 160;
     height: 40%;
@@ -21,7 +21,7 @@
 }
 
 .top-start {
-    x: 0;
+    x: -2;
     y: 0;
 }
 
