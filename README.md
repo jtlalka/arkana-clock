@@ -35,6 +35,16 @@ No third-party libraries and dependencies.
 Built based on Fitbit guidelines and best practices.
 ```
 
+### CLI commands
+```
+fitbit      -- enter to CLI
+build       -- build app for all variants
+install     -- install app on connected clock/simulator
+bi          -- build and install short command
+screenshot  -- take screen shot from connected clock/simulator
+exit        -- exit from CLI
+```
+
 ### TODO
 
 - extract settings keys to `common` shared properties
